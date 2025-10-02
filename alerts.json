@@ -1,0 +1,322 @@
+[
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "amandasanchez",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "johnsonjoshua",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Peer Group Deviation",
+    "user_id": "xreid",
+    "details": "Accessed unusual host 'host-5' for peer group 1."
+  },
+  {
+    "alert_type": "Peer Group Deviation",
+    "user_id": "lrobinson",
+    "details": "Accessed unusual host 'host-6' for peer group 2."
+  },
+  {
+    "alert_type": "Peer Group Deviation",
+    "user_id": "michellejames",
+    "details": "Accessed unusual host 'host-1' for peer group 3."
+  },
+  {
+    "alert_type": "Peer Group Deviation",
+    "user_id": "amandasanchez",
+    "details": "Accessed unusual host 'host-5' for peer group 0."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "kendragalloway",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "donaldgarcia",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "janetwilliams",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "cassandra07",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "hoffmanjennifer",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "robinsonwilliam",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "robinsonwilliam",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "amandasanchez",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "cassandra07",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jacqueline19",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "johnsonjoshua",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "amandasanchez",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jacqueline19",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "xreid",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "susanrogers",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "michellejames",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "hoffmanjennifer",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "xreid",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "robinsonwilliam",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "amandasanchez",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "garzaanthony",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jamesmichael",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jacqueline19",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lisa02",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jacqueline19",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lrobinson",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "johnsonjoshua",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "xreid",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "michellejames",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "susanrogers",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lrobinson",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "dudleynicholas",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "michellejames",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "kendragalloway",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "xreid",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "hoffmanjennifer",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "janetwilliams",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jamesmichael",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "jacqueline19",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "garzaanthony",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "johnsonjoshua",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "maria95",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "susanrogers",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "garzaanthony",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lisa02",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "xreid",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "kendragalloway",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "dudleynicholas",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lrobinson",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "mitchellclark",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lisa02",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "garzaanthony",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "lrobinson",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "susanrogers",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "johnsonjoshua",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "dudleynicholas",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "cassandra07",
+    "details": "Successful login followed a failed login in the same session."
+  },
+  {
+    "alert_type": "Suspicious Sequence",
+    "user_id": "mitchellclark",
+    "details": "Successful login followed a failed login in the same session."
+  }
+]
