@@ -1,0 +1,41 @@
+{
+  "auth_login": {
+    "auth_login": 0.675,
+    "process_execute_whoami.exe": 0.013888888888888888,
+    "file_read": 0.13472222222222222,
+    "process_execute_git": 0.12638888888888888,
+    "file_write": 0.05
+  },
+  "process_execute_whoami.exe": {
+    "process_execute_net.exe": 1.0
+  },
+  "process_execute_net.exe": {
+    "process_execute_powershell.exe": 1.0
+  },
+  "process_execute_powershell.exe": {
+    "windows_service_install": 1.0
+  },
+  "windows_service_install": {
+    "auth_login": 1.0
+  },
+  "file_read": {
+    "process_execute_git": 0.44594594594594594,
+    "auth_login": 0.36486486486486486,
+    "process_execute_7z.exe": 0.13513513513513514,
+    "file_read": 0.05405405405405406
+  },
+  "process_execute_git": {
+    "auth_login": 0.8076923076923077,
+    "file_read": 0.0641025641025641,
+    "process_execute_git": 0.1282051282051282
+  },
+  "file_write": {
+    "auth_login": 0.95,
+    "file_write": 0.05
+  },
+  "process_execute_7z.exe": {
+    "auth_login": 0.6,
+    "file_read": 0.2,
+    "process_execute_git": 0.2
+  }
+}
