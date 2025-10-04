@@ -6,13 +6,9 @@ from pathlib import Path
 from collections import Counter
 
 def run_som_analysis(user_features_path='user_features.csv', output_image_path='som_u_matrix.png'):
-    """
-    Performs an advanced SOM analysis using quantization error and a multi-epoch 
-    strategy to robustly identify outliers.
-    """
+
     print(f"Starting Advanced SOM analysis from '{user_features_path}'...")
 
-    # --- 1. Load and Validate Data ---
     input_file = Path(user_features_path)
     if not input_file.exists():
         print(f"Error: {user_features_path} not found. Please run build_features.py first.")
@@ -28,7 +24,6 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
         print("The SOM cannot find outliers if there is no variation in the data.")
         return
 
-    # --- 2. Implement the Multi-Epoch Training Strategy ---
     num_epochs = 10
     all_outliers = []
     
@@ -51,26 +46,19 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
         iterations = max(500, num_users * 5)
         som.train_random(data, iterations, verbose=False)
         
-        # --- NEW & IMPROVED OUTLIER DETECTION LOGIC ---
-        # Calculate quantization error for each user. This is the distance between
-        # each user's data vector and its Best Matching Unit (BMU) on the map.
-        # A high error means the user is far from any representative neuron (cluster).
+        
         q_errors = np.linalg.norm(som.quantization(data) - data, axis=1)
 
-        # Identify outliers based on the distribution of these errors.
-        # Anyone in the top 5% (95th percentile) of errors is a candidate.
+
         error_threshold = np.percentile(q_errors, 95)
         
-        # Get the indices of the users who are above the threshold
         outlier_indices = np.where(q_errors > error_threshold)[0]
         
-        # Add the corresponding user_ids to our list
         for idx in outlier_indices:
             all_outliers.append(user_features_df.index[idx])
     
     print("\n--- Multi-Epoch Analysis Complete ---")
 
-    # --- 3. Report Consistent Outliers ---
     if not all_outliers:
         print("No significant outliers were found across any of the training epochs.")
         return
@@ -92,7 +80,6 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
     if not found_strong_outlier:
         print("\nNo users were consistently identified as strong outliers.")
         
-    # --- 4. Visualize the U-Matrix of the LAST Epoch for reference ---
     plt.figure(figsize=(12, 12))
     plt.pcolor(som.distance_map().T, cmap='viridis')
     plt.colorbar(label='Inter-neuron Distance')

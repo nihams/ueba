@@ -1,0 +1,454 @@
+{
+  "0": {
+    "('auth_login', 'process_start_None')": {
+      "process_start_None": 0.375,
+      "auth_login": 0.375,
+      "sys_windows_event": 0.125,
+      "file_DELETE": 0.125
+    },
+    "('process_start_None', 'process_start_None')": {
+      "sys_windows_event": 1.0
+    },
+    "('file_WRITE', 'auth_login')": {
+      "auth_login": 0.5,
+      "file_WRITE": 0.5
+    },
+    "('process_start_None', 'auth_login')": {
+      "process_start_None": 0.3333333333333333,
+      "auth_login": 0.3333333333333333,
+      "file_DOWNLOAD": 0.16666666666666666,
+      "file_DELETE": 0.16666666666666666
+    },
+    "('sys_windows_event', 'auth_login')": {
+      "auth_login": 0.8571428571428571,
+      "process_start_None": 0.14285714285714285
+    },
+    "('file_DOWNLOAD', 'auth_login')": {
+      "file_DOWNLOAD": 0.3333333333333333,
+      "process_start_None": 0.6666666666666666
+    },
+    "('auth_login', 'file_READ')": {
+      "auth_login": 1.0
+    },
+    "('file_READ', 'auth_login')": {
+      "auth_login": 1.0
+    },
+    "('auth_login', 'auth_login')": {
+      "auth_login": 0.6388888888888888,
+      "file_READ": 0.027777777777777776,
+      "file_WRITE": 0.1111111111111111,
+      "sys_windows_event": 0.05555555555555555,
+      "process_start_None": 0.05555555555555555,
+      "file_DELETE": 0.08333333333333333,
+      "auth_loSgin": 0.027777777777777776
+    },
+    "('file_DOWNLOAD', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('auth_login', 'file_WRITE')": {
+      "auth_login": 0.6666666666666666,
+      "file_DELETE": 0.3333333333333333
+    },
+    "('auth_login', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('process_start_None', 'sys_windows_event')": {
+      "auth_login": 0.5,
+      "file_DELETE": 0.5
+    },
+    "('auth_login', 'file_DELETE')": {
+      "auth_login": 1.0
+    },
+    "('process_start_None', 'file_DOWNLOAD')": {
+      "process_start_None": 1.0
+    },
+    "('file_DOWNLOAD', 'process_start_None')": {
+      "auth_login": 1.0
+    },
+    "('auth_login', 'file_DOWNLOAD')": {
+      "auth_login": 1.0
+    },
+    "('file_DELETE', 'auth_login')": {
+      "auth_login": 0.8333333333333334,
+      "sys_windows_event": 0.16666666666666666
+    },
+    "('process_start_None', 'file_DELETE')": {
+      "sys_windows_event": 1.0
+    },
+    "('file_DELETE', 'file_READ')": {
+      "auth_login": 0.6666666666666666,
+      "process_start_None": 0.3333333333333333
+    },
+    "('sys_windows_event', 'sys_windows_event')": {
+      "file_READ": 1.0
+    },
+    "('sys_windows_event', 'file_READ')": {
+      "sys_windows_event": 1.0
+    },
+    "('auth_login', 'auth_loSgin')": {
+      "file_DELETE": 1.0
+    },
+    "('auth_loSgin', 'file_DELETE')": {
+      "file_READ": 1.0
+    },
+    "('process_start_None', 'file_READ')": {
+      "auth_login": 1.0
+    },
+    "('file_READ', 'sys_windows_event')": {
+      "auth_login": 1.0
+    }
+  },
+  "1": {
+    "('sys_windows_event', 'auth_login')": {
+      "sys_windows_event": 0.2,
+      "file_READ": 0.1,
+      "file_DELETE": 0.1,
+      "auth_login": 0.3,
+      "file_WRITE": 0.1,
+      "file_DOWNLOAD": 0.1,
+      "process_start_None": 0.1
+    },
+    "('auth_login', 'sys_windows_event')": {
+      "auth_login": 0.5384615384615384,
+      "sys_windows_event": 0.23076923076923078,
+      "process_start_None": 0.23076923076923078
+    },
+    "('file_DOWNLOAD', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('auth_login', 'auth_login')": {
+      "auth_login": 0.5490196078431373,
+      "sys_windows_event": 0.11764705882352941,
+      "file_READ": 0.0784313725490196,
+      "process_start_None": 0.1568627450980392,
+      "file_DOWNLOAD": 0.0392156862745098,
+      "file_WRITE": 0.058823529411764705
+    },
+    "('process_start_None', 'sys_windows_event')": {
+      "auth_login": 0.8,
+      "file_READ": 0.2
+    },
+    "('file_READ', 'auth_login')": {
+      "auth_login": 0.8,
+      "sys_windows_event": 0.2
+    },
+    "('process_start_None', 'auth_login')": {
+      "sys_windows_event": 0.1875,
+      "auth_login": 0.5625,
+      "process_start_None": 0.125,
+      "file_READ": 0.0625,
+      "file_DELETE": 0.0625
+    },
+    "('auth_login', 'file_READ')": {
+      "auth_login": 0.6666666666666666,
+      "process_start_None": 0.16666666666666666,
+      "file_WRITE": 0.16666666666666666
+    },
+    "('file_WRITE', 'auth_login')": {
+      "auth_login": 0.6666666666666666,
+      "sys_windows_event": 0.3333333333333333
+    },
+    "('auth_login', 'file_DOWNLOAD')": {
+      "sys_windows_event": 0.14285714285714285,
+      "process_start_None": 0.42857142857142855,
+      "auth_login": 0.42857142857142855
+    },
+    "('auth_login', 'file_DELETE')": {
+      "file_WRITE": 0.25,
+      "auth_login": 0.5,
+      "file_DELETE": 0.25
+    },
+    "('sys_windows_event', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('sys_windows_event', 'process_start_None')": {
+      "auth_login": 1.0
+    },
+    "('file_DELETE', 'auth_login')": {
+      "auth_login": 0.6,
+      "sys_windows_event": 0.2,
+      "file_DOWNLOAD": 0.2
+    },
+    "('auth_login', 'process_start_None')": {
+      "file_WRITE": 0.08333333333333333,
+      "auth_login": 0.8333333333333334,
+      "file_DELETE": 0.08333333333333333
+    },
+    "('file_DOWNLOAD', 'auth_login')": {
+      "file_WRITE": 0.2,
+      "auth_login": 0.6,
+      "file_READ": 0.2
+    },
+    "('auth_login', 'file_WRITE')": {
+      "sys_windows_event": 1.0
+    },
+    "('file_READ', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('process_start_None', 'process_start_None')": {
+      "auth_login": 1.0
+    },
+    "('process_start_None', 'file_WRITE')": {
+      "auth_login": 1.0
+    },
+    "('file_DOWNLOAD', 'process_start_None')": {
+      "sys_windows_event": 1.0
+    },
+    "('file_DELETE', 'sys_windows_event')": {
+      "auth_login": 1.0
+    }
+  },
+  "2": {
+    "('auth_login', 'auth_login')": {
+      "file_WRITE": 0.03508771929824561,
+      "auth_login": 0.631578947368421,
+      "process_start_None": 0.14035087719298245,
+      "file_DOWNLOAD": 0.05263157894736842,
+      "file_DELETE": 0.03508771929824561,
+      "sys_windows_event": 0.10526315789473684
+    },
+    "('auth_login', 'file_WRITE')": {
+      "process_start_None": 0.6666666666666666,
+      "sys_windows_event": 0.3333333333333333
+    },
+    "('file_WRITE', 'process_start_None')": {
+      "file_DOWNLOAD": 0.5,
+      "auth_login": 0.5
+    },
+    "('sys_windows_event', 'auth_login')": {
+      "auth_login": 0.8,
+      "sys_windows_event": 0.13333333333333333,
+      "file_DOWNLOAD": 0.06666666666666667
+    },
+    "('auth_login', 'file_DOWNLOAD')": {
+      "auth_login": 0.16666666666666666,
+      "sys_windows_event": 0.16666666666666666,
+      "file_DELETE": 0.16666666666666666,
+      "file_READ": 0.16666666666666666,
+      "file_DOWNLOAD": 0.16666666666666666,
+      "file_WRITE": 0.16666666666666666
+    },
+    "('file_DOWNLOAD', 'auth_login')": {
+      "auth_login": 0.75,
+      "process_start_None": 0.25
+    },
+    "('sys_windows_event', 'sys_windows_event')": {
+      "file_DELETE": 1.0
+    },
+    "('file_DOWNLOAD', 'process_start_None')": {
+      "auth_login": 0.5,
+      "sys_windows_event": 0.5
+    },
+    "('process_start_None', 'auth_login')": {
+      "auth_login": 0.6363636363636364,
+      "sys_windows_event": 0.09090909090909091,
+      "file_DELETE": 0.18181818181818182,
+      "file_READ": 0.09090909090909091
+    },
+    "('auth_login', 'process_start_None')": {
+      "auth_login": 0.7,
+      "file_DOWNLOAD": 0.1,
+      "file_READ": 0.1,
+      "file_WRITE": 0.1
+    },
+    "('auth_login', 'file_READ')": {
+      "auth_login": 0.6666666666666666,
+      "process_start_None": 0.3333333333333333
+    },
+    "('file_DELETE', 'file_READ')": {
+      "file_DELETE": 1.0
+    },
+    "('auth_login', 'sys_windows_event')": {
+      "auth_login": 0.6363636363636364,
+      "file_READ": 0.09090909090909091,
+      "process_start_None": 0.09090909090909091,
+      "file_DOWNLOAD": 0.09090909090909091,
+      "sys_windows_event": 0.09090909090909091
+    },
+    "('auth_login', 'file_DELETE')": {
+      "auth_login": 0.3333333333333333,
+      "file_DELETE": 0.16666666666666666,
+      "sys_windows_event": 0.3333333333333333,
+      "file_READ": 0.16666666666666666
+    },
+    "('file_DELETE', 'auth_login')": {
+      "auth_login": 0.8,
+      "process_start_None": 0.2
+    },
+    "('process_start_None', 'file_DOWNLOAD')": {
+      "auth_login": 1.0
+    },
+    "('file_READ', 'auth_login')": {
+      "auth_login": 0.4,
+      "process_start_None": 0.2,
+      "file_WRITE": 0.2,
+      "file_READ": 0.2
+    },
+    "('file_DOWNLOAD', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('file_DOWNLOAD', 'file_READ')": {
+      "process_start_None": 0.5,
+      "auth_login": 0.5
+    },
+    "('sys_windows_event', 'process_start_None')": {
+      "file_DOWNLOAD": 1.0
+    },
+    "('file_DELETE', 'file_DELETE')": {
+      "process_start_None": 1.0
+    },
+    "('file_DELETE', 'process_start_None')": {
+      "auth_login": 1.0
+    },
+    "('file_DOWNLOAD', 'file_DELETE')": {
+      "file_WRITE": 1.0
+    },
+    "('process_start_None', 'sys_windows_event')": {
+      "process_start_None": 0.25,
+      "file_WRITE": 0.25,
+      "auth_login": 0.5
+    },
+    "('sys_windows_event', 'file_WRITE')": {
+      "auth_login": 1.0
+    },
+    "('file_WRITE', 'auth_login')": {
+      "auth_login": 1.0
+    },
+    "('process_start_None', 'process_start_None')": {
+      "file_DOWNLOAD": 1.0
+    },
+    "('sys_windows_event', 'file_DOWNLOAD')": {
+      "file_WRITE": 1.0
+    },
+    "('file_DELETE', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('process_start_None', 'file_WRITE')": {
+      "sys_windows_event": 1.0
+    },
+    "('file_DELETE', 'file_DOWNLOAD')": {
+      "sys_windows_event": 1.0
+    }
+  },
+  "3": {
+    "('sys_windows_event', 'auth_login')": {
+      "sys_windows_event": 0.375,
+      "auth_login": 0.5,
+      "file_DOWNLOAD": 0.125
+    },
+    "('auth_login', 'auth_login')": {
+      "sys_windows_event": 0.06,
+      "auth_login": 0.52,
+      "file_DELETE": 0.06,
+      "file_DOWNLOAD": 0.04,
+      "process_start_None": 0.22,
+      "file_WRITE": 0.06,
+      "file_READ": 0.04
+    },
+    "('auth_login', 'file_READ')": {
+      "auth_login": 0.75,
+      "sys_windows_event": 0.25
+    },
+    "('file_DELETE', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('auth_login', 'file_DELETE')": {
+      "process_start_None": 0.14285714285714285,
+      "sys_windows_event": 0.2857142857142857,
+      "auth_login": 0.5714285714285714
+    },
+    "('file_READ', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('sys_windows_event', 'process_start_None')": {
+      "process_start_None": 0.16666666666666666,
+      "auth_login": 0.8333333333333334
+    },
+    "('auth_login', 'process_start_None')": {
+      "auth_login": 0.5454545454545454,
+      "process_start_None": 0.2727272727272727,
+      "sys_windows_event": 0.18181818181818182
+    },
+    "('sys_windows_event', 'file_DELETE')": {
+      "auth_login": 0.6666666666666666,
+      "sys_windows_event": 0.3333333333333333
+    },
+    "('process_start_None', 'auth_login')": {
+      "auth_login": 0.3,
+      "sys_windows_event": 0.3,
+      "file_WRITE": 0.1,
+      "process_start_None": 0.1,
+      "file_READ": 0.1,
+      "file_DOWNLOAD": 0.1
+    },
+    "('file_READ', 'auth_login')": {
+      "auth_login": 0.2,
+      "sys_windows_event": 0.4,
+      "process_start_None": 0.2,
+      "file_WRITE": 0.2
+    },
+    "('process_start_None', 'process_start_None')": {
+      "auth_login": 1.0
+    },
+    "('auth_login', 'sys_windows_event')": {
+      "process_start_None": 0.5454545454545454,
+      "sys_windows_event": 0.09090909090909091,
+      "file_DOWNLOAD": 0.09090909090909091,
+      "auth_login": 0.2727272727272727
+    },
+    "('process_start_None', 'sys_windows_event')": {
+      "auth_login": 0.5,
+      "file_READ": 0.25,
+      "sys_windows_event": 0.25
+    },
+    "('process_start_None', 'file_READ')": {
+      "process_start_None": 1.0
+    },
+    "('file_READ', 'process_start_None')": {
+      "auth_login": 1.0
+    },
+    "('file_WRITE', 'auth_login')": {
+      "file_READ": 0.3333333333333333,
+      "process_start_None": 0.3333333333333333,
+      "file_DOWNLOAD": 0.3333333333333333
+    },
+    "('auth_login', 'file_WRITE')": {
+      "sys_windows_event": 0.5,
+      "auth_login": 0.5
+    },
+    "('process_start_None', 'file_DOWNLOAD')": {
+      "auth_login": 1.0
+    },
+    "('file_DELETE', 'process_start_None')": {
+      "file_WRITE": 1.0
+    },
+    "('process_start_None', 'file_WRITE')": {
+      "file_READ": 1.0
+    },
+    "('sys_windows_event', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('file_DOWNLOAD', 'auth_login')": {
+      "auth_login": 0.6,
+      "sys_windows_event": 0.2,
+      "process_start_None": 0.2
+    },
+    "('file_WRITE', 'file_READ')": {
+      "auth_login": 1.0
+    },
+    "('file_DOWNLOAD', 'file_DOWNLOAD')": {
+      "auth_login": 1.0
+    },
+    "('file_WRITE', 'sys_windows_event')": {
+      "auth_login": 1.0
+    },
+    "('file_DELETE', 'auth_login')": {
+      "sys_windows_event": 0.5,
+      "auth_login": 0.5
+    },
+    "('auth_login', 'file_DOWNLOAD')": {
+      "file_DELETE": 0.5,
+      "auth_login": 0.5
+    }
+  }
+}
