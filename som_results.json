@@ -1,0 +1,51 @@
+[
+  {
+    "user_id": "test_attacker",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 4,
+    "benign_score": 0
+  },
+  {
+    "user_id": "emarshall",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 0,
+    "benign_score": 2
+  },
+  {
+    "user_id": "enolan",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 0,
+    "benign_score": 2
+  },
+  {
+    "user_id": "fnorman",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 0,
+    "benign_score": 2
+  },
+  {
+    "user_id": "michaelfisher",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 0,
+    "benign_score": 2
+  },
+  {
+    "user_id": "morgan59",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 0,
+    "benign_score": 2
+  },
+  {
+    "user_id": "sparsons",
+    "flagged_epochs": 10,
+    "total_epochs": 10,
+    "attack_score": 0,
+    "benign_score": 2
+  }
+]

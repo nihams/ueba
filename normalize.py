@@ -5,6 +5,7 @@ import json
 import csv
 from datetime import datetime
 
+# --- Configuration ---
 RAW_DIR = "data/raw"
 OUT_DIR = "data/normalized"
 OUT_FILE = os.path.join(OUT_DIR, "events.jsonl")
@@ -32,73 +33,49 @@ def normalize_all_logs(raw_dir=RAW_DIR, out_file=OUT_FILE):
     os.makedirs(os.path.dirname(out_file), exist_ok=True)
     events = []
     
-    # --- Auth Logs ---
-    with open(os.path.join(raw_dir, "auth.log"), "r") as f:
-        for line in f:
-            if match := auth_log_re.match(line):
-                data = match.groupdict()
-                events.append({
-                    "timestamp": parse_syslog_time(data['timestamp']).isoformat() + "Z",
-                    "event_type": "auth", "action": "login",
-                    "user_id": data['user_id'], "host": data['host'],
-                    "src_ip": data['src_ip'], "src_port": int(data['src_port']),
-                    "status": "success" if data['status'] == 'Accepted' else 'failure',
-                    "raw": line.strip()
-                })
+    all_events = []
+    
+    # Define which parser to use for each file
+    file_parsers = {
+        "auth.log": ("line", parse_auth_line),
+        "endpoint_proc.jsonl": ("line", parse_endpoint_json),
+        "web_proxy.jsonl": ("line", parse_web_proxy_json), # <-- ADDED NEW FILE
+        "file_audit.csv": ("csv", parse_file_audit_row)
+    }
 
-    # --- Firewall Logs ---
-    with open(os.path.join(raw_dir, "firewall.log"), "r") as f:
-        for line in f:
-            if match := fw_log_re.match(line):
-                data = match.groupdict()
-                events.append({
-                    "timestamp": parse_syslog_time(data['timestamp']).isoformat() + "Z",
-                    "event_type": "network", "action": data['action'].lower(),
-                    "host": data['host'], "src_ip": data['src_ip'],
-                    "src_port": int(data['src_port']), "dst_ip": data['dst_ip'],
-                    "dst_port": int(data['dst_port']), "bytes": int(data['bytes']),
-                    "raw": line.strip()
-                })
+    print("Starting log normalization process...")
+    for filename, (file_type, parser_func) in file_parsers.items():
+        filepath = os.path.join(raw_dir, filename)
+        if not os.path.exists(filepath):
+            print(f"  - Warning: '{filename}' not found, skipping.")
+            continue
+        
+        print(f"  - Processing '{filename}'...")
+        with open(filepath, "r") as f:
+            if file_type == "line":
+                for line in f:
+                    if event := parser_func(line):
+                        all_events.append(event)
+            elif file_type == "csv":
+                reader = csv.DictReader(f)
+                for row in reader:
+                    if event := parser_func(row):
+                        all_events.append(event)
 
-    # --- File Audit Logs ---
-    with open(os.path.join(raw_dir, "file_audit.csv"), "r") as f:
-        for row in csv.DictReader(f):
-            events.append({
-                "timestamp": row['timestamp'], "event_type": "file",
-                "action": row['action'].lower(), "user_id": row['user'],
-                "resource": row['path'], "bytes": int(row['bytes']),
-                "raw": f"{row['timestamp']},{row['user']},{row['path']},{row['action']},{row['bytes']}"
-            })
+    if not all_events:
+        print("No events were processed. Is the data/raw directory populated?")
+        return
 
-    # --- Endpoint Process Logs ---
-    with open(os.path.join(raw_dir, "endpoint_proc.jsonl"), "r") as f:
-        for line in f:
-            data = json.loads(line)
-            events.append({
-                "timestamp": data['timestamp'], "event_type": "process",
-                "action": "execute", "user_id": data['user'],
-                "host": data['host'], "process": data['process'],
-                "raw": line.strip()
-            })
-            
-    # --- Windows Event Logs ---
-    with open(os.path.join(raw_dir, "windows_events.jsonl"), "r") as f:
-        for line in f:
-            data = json.loads(line)
-            events.append({
-                "timestamp": data['TimeCreated'], "event_type": "windows",
-                "action": "service_install" if data.get('EventID') == 7045 else "unknown",
-                "user_id": data['User'], "host": data['Host'],
-                "raw": line.strip()
-            })
+    # Sort all events by timestamp to create a chronological record
+    print("Sorting all events by timestamp...")
+    all_events.sort(key=lambda x: x.get('timestamp', ''))
 
-    events.sort(key=lambda x: x['timestamp'])
-
+    # Write to the canonical output file
     with open(out_file, "w") as f:
-        for event in events:
+        for event in all_events:
             f.write(json.dumps(event) + '\n')
             
-    print(f"Successfully normalized {len(events)} events into '{out_file}'")
+    print(f"\nSuccessfully normalized {len(all_events)} events into '{out_file}'")
 
 if __name__ == "__main__":
     normalize_all_logs()

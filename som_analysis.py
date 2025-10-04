@@ -4,6 +4,7 @@ from minisom import MiniSom
 import matplotlib.pyplot as plt
 from pathlib import Path
 from collections import Counter
+import json
 
 def run_som_analysis(user_features_path='user_features.csv', output_image_path='som_u_matrix.png'):
 
@@ -15,7 +16,9 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
         return
 
     user_features_df = pd.read_csv(input_file, index_col='user_id')
-    data = user_features_df.values.astype(float)
+    
+    feature_cols = [col for col in user_features_df.columns if not col.endswith('_score')]
+    data = user_features_df[feature_cols].values.astype(float)
     
     print(f"Loaded feature matrix for {data.shape[0]} users with {data.shape[1]} features each.")
 
@@ -61,24 +64,10 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
 
     if not all_outliers:
         print("No significant outliers were found across any of the training epochs.")
-        return
 
-    outlier_counts = Counter(all_outliers)
-    sorted_outliers = sorted(outlier_counts.items(), key=lambda item: item[1], reverse=True)
-
-    print("\nTop potential outliers (ranked by consistency across epochs):")
-    strong_outlier_threshold = num_epochs // 2
-    found_strong_outlier = False
-
-    for user, count in sorted_outliers:
-        if count >= strong_outlier_threshold:
-            print(f"  -> User: {user:<20} (Flagged in {count}/{num_epochs} epochs) [STRONG CANDIDATE]")
-            found_strong_outlier = True
-        else:
-            print(f"  -> User: {user:<20} (Flagged in {count}/{num_epochs} epochs) [Weak Candidate]")
-
-    if not found_strong_outlier:
-        print("\nNo users were consistently identified as strong outliers.")
+    with open(results_path, 'w') as f:
+        json.dump(sorted_outliers, f, indent=2)
+    print(f"\n SOM analysis results saved to '{results_path}'")
         
     plt.figure(figsize=(12, 12))
     plt.pcolor(som.distance_map().T, cmap='viridis')
@@ -87,7 +76,7 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
     plt.xlabel('SOM X-coordinate')
     plt.ylabel('SOM Y-coordinate')
     plt.savefig(output_image_path)
-    print(f"\n✅ U-matrix visualization from the last epoch saved to '{output_image_path}'")
+    print(f" U-matrix visualization from the last epoch saved to '{output_image_path}'")
     plt.close()
 
 if __name__ == "__main__":
