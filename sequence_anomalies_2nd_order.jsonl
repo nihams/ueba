@@ -1,0 +1,348 @@
+{"user_id":"robinsonwilliam","score":3.5835189385,"sequence":"auth_login -> auth_login -> file_READ"}
+{"user_id":"kendragalloway","score":3.3499040873,"sequence":"auth_login -> auth_login -> file_DELETE"}
+{"user_id":"xreid","score":3.2386784522,"sequence":"auth_login -> auth_login -> file_DOWNLOAD"}
+{"user_id":"lisa02","score":2.9444389792,"sequence":"auth_login -> auth_login -> file_DOWNLOAD"}
+{"user_id":"kendragalloway","score":2.9444389792,"sequence":"auth_login -> auth_login -> file_DOWNLOAD"}
+{"user_id":"jamesmichael","score":2.8903717579,"sequence":"auth_login -> auth_login -> process_start_None"}
+{"user_id":"jamesmichael","score":2.8903717579,"sequence":"auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"jpeterson","score":2.8903717579,"sequence":"auth_login -> auth_login -> process_start_None"}
+{"user_id":"mitchellclark","score":2.8332133441,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"dudleynicholas","score":2.8332133441,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"michellejames","score":2.8134107168,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"michellejames","score":2.8134107168,"sequence":"auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"michellejames","score":2.8134107168,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"jacqueline19","score":2.7725887222,"sequence":"process_start_None -> auth_login -> file_DELETE"}
+{"user_id":"dudleynicholas","score":2.7725887222,"sequence":"process_start_None -> auth_login -> file_READ"}
+{"user_id":"dudleynicholas","score":2.5455312716,"sequence":"auth_login -> auth_login -> file_READ"}
+{"user_id":"mitchellclark","score":2.5455312716,"sequence":"auth_login -> auth_login -> file_READ"}
+{"user_id":"jacqueline19","score":2.4849066498,"sequence":"auth_login -> process_start_None -> file_DELETE"}
+{"user_id":"dudleynicholas","score":2.4849066498,"sequence":"auth_login -> process_start_None -> file_WRITE"}
+{"user_id":"jamesmichael","score":2.4849066498,"sequence":"auth_login -> auth_login -> file_DELETE"}
+{"user_id":"susanrogers","score":2.3978952728,"sequence":"auth_login -> sys_windows_event -> file_DOWNLOAD"}
+{"user_id":"kendragalloway","score":2.3978952728,"sequence":"process_start_None -> auth_login -> file_READ"}
+{"user_id":"janetwilliams","score":2.3978952728,"sequence":"auth_login -> sys_windows_event -> file_READ"}
+{"user_id":"kendragalloway","score":2.302585093,"sequence":"auth_login -> process_start_None -> file_READ"}
+{"user_id":"susanrogers","score":2.302585093,"sequence":"process_start_None -> auth_login -> file_WRITE"}
+{"user_id":"johnsonjoshua","score":2.302585093,"sequence":"process_start_None -> auth_login -> process_start_None"}
+{"user_id":"janetwilliams","score":2.2512917986,"sequence":"auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"jamesmichael","score":2.1972245773,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"jpeterson","score":2.1972245773,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"robinsonwilliam","score":2.1972245773,"sequence":"auth_login -> auth_login -> file_WRITE"}
+{"user_id":"jacqueline19","score":2.1400661635,"sequence":"auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"jacqueline19","score":2.1400661635,"sequence":"auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"mitchellclark","score":2.1400661635,"sequence":"auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"garzaanthony","score":2.0794415417,"sequence":"sys_windows_event -> auth_login -> file_DOWNLOAD"}
+{"user_id":"susanrogers","score":2.0563468504,"sequence":"auth_login -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"johnsonjoshua","score":2.0330868426,"sequence":"auth_login -> auth_login -> file_DELETE -> sys_windows_event"}
+{"user_id":"lisa02","score":2.0149030205,"sequence":"sys_windows_event -> auth_login -> sys_windows_event"}
+{"user_id":"jacqueline19","score":1.9459101491,"sequence":"auth_login -> file_DOWNLOAD -> sys_windows_event"}
+{"user_id":"kendragalloway","score":1.8776845977,"sequence":"auth_login -> auth_login -> file_WRITE -> process_start_None"}
+{"user_id":"xreid","score":1.852384091,"sequence":"auth_login -> auth_login -> process_start_None"}
+{"user_id":"kendragalloway","score":1.8097818763,"sequence":"auth_login -> auth_login -> file_DOWNLOAD -> file_READ -> auth_login"}
+{"user_id":"jacqueline19","score":1.8032016161,"sequence":"auth_login -> auth_login -> sys_windows_event -> sys_windows_event"}
+{"user_id":"donaldgarcia","score":1.7917594692,"sequence":"auth_login -> file_DOWNLOAD -> file_DOWNLOAD"}
+{"user_id":"dudleynicholas","score":1.7917594692,"sequence":"auth_login -> file_READ -> process_start_None"}
+{"user_id":"xreid","score":1.7917594692,"sequence":"auth_login -> file_READ -> file_WRITE"}
+{"user_id":"kendragalloway","score":1.7917594692,"sequence":"auth_login -> file_DELETE -> file_READ"}
+{"user_id":"susanrogers","score":1.7917594692,"sequence":"sys_windows_event -> process_start_None -> process_start_None"}
+{"user_id":"susanrogers","score":1.7532789487,"sequence":"auth_login -> auth_login -> file_WRITE -> sys_windows_event"}
+{"user_id":"johnsonjoshua","score":1.7532789487,"sequence":"auth_login -> auth_login -> file_READ -> auth_login"}
+{"user_id":"lisa02","score":1.7047480922,"sequence":"process_start_None -> auth_login -> file_DELETE"}
+{"user_id":"johnsonjoshua","score":1.6865132523,"sequence":"auth_login -> auth_login -> file_DELETE -> auth_login"}
+{"user_id":"jacqueline19","score":1.6739764336,"sequence":"process_start_None -> auth_login -> sys_windows_event"}
+{"user_id":"maria95","score":1.6691982402,"sequence":"auth_login -> auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"michellejames","score":1.6094379124,"sequence":"auth_login -> auth_login -> process_start_None -> sys_windows_event"}
+{"user_id":"susanrogers","score":1.6094379124,"sequence":"file_DOWNLOAD -> auth_login -> process_start_None"}
+{"user_id":"lisa02","score":1.6094379124,"sequence":"file_READ -> auth_login -> file_READ"}
+{"user_id":"lisa02","score":1.6094379124,"sequence":"file_READ -> auth_login -> file_WRITE"}
+{"user_id":"mitchellclark","score":1.6094379124,"sequence":"file_DELETE -> auth_login -> file_DOWNLOAD"}
+{"user_id":"jacqueline19","score":1.6094379124,"sequence":"process_start_None -> sys_windows_event -> file_READ"}
+{"user_id":"jacqueline19","score":1.6094379124,"sequence":"sys_windows_event -> auth_login -> sys_windows_event"}
+{"user_id":"dudleynicholas","score":1.6094379124,"sequence":"file_DELETE -> auth_login -> sys_windows_event"}
+{"user_id":"jacqueline19","score":1.6094379124,"sequence":"sys_windows_event -> auth_login -> sys_windows_event"}
+{"user_id":"jacqueline19","score":1.5749414767,"sequence":"sys_windows_event -> auth_login -> file_DOWNLOAD -> auth_login"}
+{"user_id":"johnsonjoshua","score":1.5617828225,"sequence":"file_READ -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"xreid","score":1.5322673121,"sequence":"auth_login -> auth_login -> file_DOWNLOAD -> auth_login -> auth_login"}
+{"user_id":"michellejames","score":1.5219831576,"sequence":"auth_login -> auth_login -> auth_login -> file_DOWNLOAD -> file_DELETE"}
+{"user_id":"johnsonjoshua","score":1.5141277326,"sequence":"auth_login -> auth_login -> process_start_None"}
+{"user_id":"michellejames","score":1.5141277326,"sequence":"auth_login -> auth_login -> process_start_None"}
+{"user_id":"johnsonjoshua","score":1.5089095866,"sequence":"auth_login -> auth_login -> auth_login -> auth_login -> file_READ"}
+{"user_id":"lisa02","score":1.482838792,"sequence":"auth_login -> auth_login -> file_WRITE -> process_start_None -> file_DOWNLOAD"}
+{"user_id":"mitchellclark","score":1.4754981899,"sequence":"auth_login -> auth_login -> file_READ -> auth_login"}
+{"user_id":"mitchellclark","score":1.4663370688,"sequence":"auth_login -> sys_windows_event -> process_start_None"}
+{"user_id":"jacqueline19","score":1.4663370688,"sequence":"auth_login -> sys_windows_event -> process_start_None"}
+{"user_id":"jpeterson","score":1.463369701,"sequence":"sys_windows_event -> auth_login -> process_start_None -> process_start_None"}
+{"user_id":"mitchellclark","score":1.4608121507,"sequence":"auth_login -> sys_windows_event -> auth_login -> file_READ"}
+{"user_id":"lrobinson","score":1.4606340102,"sequence":"process_start_None -> auth_login -> file_DELETE -> sys_windows_event -> auth_login -> file_DOWNLOAD -> file_WRITE"}
+{"user_id":"susanrogers","score":1.4543604483,"sequence":"file_DOWNLOAD -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"amandasanchez","score":1.425555373,"sequence":"auth_login -> auth_login -> file_DELETE -> auth_login -> sys_windows_event"}
+{"user_id":"donaldgarcia","score":1.4077567083,"sequence":"auth_login -> process_start_None -> file_DOWNLOAD -> auth_login -> auth_login -> file_DELETE -> auth_login"}
+{"user_id":"mitchellclark","score":1.3862943611,"sequence":"auth_login -> file_DELETE -> file_DELETE"}
+{"user_id":"lisa02","score":1.3862943611,"sequence":"process_start_None -> sys_windows_event -> process_start_None"}
+{"user_id":"jamesmichael","score":1.3862943611,"sequence":"auth_login -> process_start_None -> sys_windows_event -> auth_login"}
+{"user_id":"johnsonjoshua","score":1.3862943611,"sequence":"process_start_None -> sys_windows_event -> file_READ"}
+{"user_id":"janetwilliams","score":1.3862943611,"sequence":"process_start_None -> sys_windows_event -> file_WRITE"}
+{"user_id":"mitchellclark","score":1.3862943611,"sequence":"auth_login -> file_DELETE -> file_WRITE"}
+{"user_id":"lisa02","score":1.3862943611,"sequence":"file_DOWNLOAD -> auth_login -> process_start_None"}
+{"user_id":"susanrogers","score":1.3862943611,"sequence":"auth_login -> file_READ -> sys_windows_event"}
+{"user_id":"donaldgarcia","score":1.3516384612,"sequence":"auth_login -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"cassandra07","score":1.3516384612,"sequence":"auth_login -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"lisa02","score":1.3491003683,"sequence":"file_DOWNLOAD -> auth_login -> auth_login -> auth_login -> sys_windows_event -> sys_windows_event"}
+{"user_id":"jacqueline19","score":1.3360662038,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login -> file_WRITE"}
+{"user_id":"garzaanthony","score":1.310124048,"sequence":"file_DOWNLOAD -> auth_login -> auth_login -> sys_windows_event -> process_start_None"}
+{"user_id":"johnsonjoshua","score":1.2992829841,"sequence":"auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"garzaanthony","score":1.2951335827,"sequence":"process_start_None -> auth_login -> file_READ -> auth_login"}
+{"user_id":"xreid","score":1.283016678,"sequence":"auth_login -> auth_login -> auth_login -> sys_windows_event -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"mitchellclark","score":1.2628643222,"sequence":"process_start_None -> sys_windows_event -> auth_login -> file_DELETE"}
+{"user_id":"mitchellclark","score":1.2628643222,"sequence":"process_start_None -> sys_windows_event -> auth_login -> file_WRITE"}
+{"user_id":"susanrogers","score":1.2527629685,"sequence":"auth_login -> file_DELETE -> sys_windows_event"}
+{"user_id":"dudleynicholas","score":1.2424533249,"sequence":"sys_windows_event -> auth_login -> process_start_None -> auth_login"}
+{"user_id":"lisa02","score":1.237217675,"sequence":"sys_windows_event -> auth_login -> auth_login -> sys_windows_event"}
+{"user_id":"lrobinson","score":1.2353308736,"sequence":"sys_windows_event -> auth_login -> auth_login -> process_start_None -> auth_login -> sys_windows_event"}
+{"user_id":"kendragalloway","score":1.2334440721,"sequence":"sys_windows_event -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"xreid","score":1.2260026068,"sequence":"auth_login -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"michellejames","score":1.2212789028,"sequence":"file_DELETE -> sys_windows_event -> auth_login -> auth_login -> auth_login -> file_DELETE -> process_start_None"}
+{"user_id":"janetwilliams","score":1.2115710278,"sequence":"auth_login -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"kendragalloway","score":1.2115710278,"sequence":"auth_login -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"susanrogers","score":1.2039728043,"sequence":"process_start_None -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":1.2039728043,"sequence":"process_start_None -> auth_login -> sys_windows_event"}
+{"user_id":"susanrogers","score":1.2039728043,"sequence":"process_start_None -> auth_login -> sys_windows_event"}
+{"user_id":"lisa02","score":1.1989476364,"sequence":"auth_login -> sys_windows_event -> process_start_None -> file_DOWNLOAD"}
+{"user_id":"johnsonjoshua","score":1.1989476364,"sequence":"auth_login -> sys_windows_event -> sys_windows_event -> auth_login"}
+{"user_id":"janetwilliams","score":1.1989476364,"sequence":"auth_login -> sys_windows_event -> file_DOWNLOAD -> file_WRITE"}
+{"user_id":"hoffmanjennifer","score":1.1897730671,"sequence":"file_DELETE -> auth_login -> auth_login -> file_WRITE"}
+{"user_id":"dudleynicholas","score":1.1816048574,"sequence":"file_DELETE -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"jacqueline19","score":1.1558189246,"sequence":"auth_login -> auth_login -> auth_login -> file_READ -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"michellejames","score":1.1512925465,"sequence":"auth_login -> auth_login -> process_start_None -> sys_windows_event -> sys_windows_event -> auth_login"}
+{"user_id":"janetwilliams","score":1.1512925465,"sequence":"auth_login -> process_start_None -> file_WRITE -> sys_windows_event"}
+{"user_id":"mitchellclark","score":1.146507821,"sequence":"process_start_None -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"xreid","score":1.146507821,"sequence":"process_start_None -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"jacqueline19","score":1.1360156913,"sequence":"auth_login -> auth_login -> process_start_None -> auth_login -> auth_login -> auth_login -> sys_windows_event -> sys_windows_event"}
+{"user_id":"jacqueline19","score":1.1308815492,"sequence":"process_start_None -> auth_login -> process_start_None -> auth_login"}
+{"user_id":"michellejames","score":1.1240090015,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"michellejames","score":1.1080787802,"sequence":"auth_login -> process_start_None -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"johnsonjoshua","score":1.1036374566,"sequence":"file_DELETE -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"mitchellclark","score":1.0986122887,"sequence":"file_WRITE -> auth_login -> sys_windows_event"}
+{"user_id":"jpeterson","score":1.0986122887,"sequence":"file_DELETE -> file_READ -> process_start_None"}
+{"user_id":"robinsonwilliam","score":1.0986122887,"sequence":"auth_login -> file_WRITE -> file_DELETE"}
+{"user_id":"garzaanthony","score":1.0986122887,"sequence":"file_WRITE -> auth_login -> file_READ"}
+{"user_id":"hoffmanjennifer","score":1.0986122887,"sequence":"file_DOWNLOAD -> auth_login -> file_DOWNLOAD"}
+{"user_id":"amandasanchez","score":1.0986122887,"sequence":"process_start_None -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":1.0986122887,"sequence":"auth_login -> file_WRITE -> sys_windows_event"}
+{"user_id":"jamesmichael","score":1.0986122887,"sequence":"process_start_None -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":1.0986122887,"sequence":"file_WRITE -> auth_login -> file_DOWNLOAD"}
+{"user_id":"maria95","score":1.0986122887,"sequence":"process_start_None -> auth_login -> process_start_None"}
+{"user_id":"donaldgarcia","score":1.0986122887,"sequence":"auth_login -> file_READ -> process_start_None"}
+{"user_id":"cassandra07","score":1.0933766387,"sequence":"file_DELETE -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"garzaanthony","score":1.0840271,"sequence":"auth_login -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"cassandra07","score":1.0517540154,"sequence":"process_start_None -> auth_login -> auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"johnsonjoshua","score":1.0415353616,"sequence":"auth_login -> file_READ -> auth_login -> file_WRITE -> auth_login -> process_start_None -> auth_login -> file_DOWNLOAD -> auth_login"}
+{"user_id":"robinsonwilliam","score":1.0397207708,"sequence":"auth_login -> process_start_None -> file_DELETE -> sys_windows_event"}
+{"user_id":"kendragalloway","score":1.0397207708,"sequence":"auth_login -> file_DOWNLOAD -> auth_login -> auth_login"}
+{"user_id":"michellejames","score":1.0371566813,"sequence":"auth_login -> file_READ -> sys_windows_event -> auth_login -> auth_login -> auth_login -> auth_login -> auth_login -> file_DOWNLOAD"}
+{"user_id":"amandasanchez","score":0.9972460116,"sequence":"auth_login -> auth_login -> auth_loSgin -> file_DELETE -> file_READ -> auth_login"}
+{"user_id":"cassandra07","score":0.9830564282,"sequence":"file_READ -> auth_login -> process_start_None -> auth_login"}
+{"user_id":"maria95","score":0.980829253,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.980829253,"sequence":"sys_windows_event -> auth_login -> sys_windows_event"}
+{"user_id":"maria95","score":0.980829253,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.980829253,"sequence":"sys_windows_event -> auth_login -> sys_windows_event"}
+{"user_id":"maria95","score":0.980829253,"sequence":"auth_login -> process_start_None -> process_start_None"}
+{"user_id":"maria95","score":0.980829253,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"xreid","score":0.9743665782,"sequence":"auth_login -> auth_login -> process_start_None -> auth_login -> process_start_None -> auth_login -> auth_login"}
+{"user_id":"mitchellclark","score":0.9540669603,"sequence":"auth_login -> file_DOWNLOAD -> auth_login -> file_READ -> auth_login"}
+{"user_id":"garzaanthony","score":0.9378035723,"sequence":"auth_login -> auth_login -> process_start_None -> process_start_None -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.9378035723,"sequence":"auth_login -> auth_login -> process_start_None -> process_start_None -> auth_login"}
+{"user_id":"michellejames","score":0.9162907319,"sequence":"file_READ -> auth_login -> sys_windows_event"}
+{"user_id":"cassandra07","score":0.9162907319,"sequence":"file_READ -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.9162907319,"sequence":"file_READ -> auth_login -> auth_login"}
+{"user_id":"donaldgarcia","score":0.8958797346,"sequence":"auth_login -> file_DOWNLOAD -> file_DELETE -> file_WRITE"}
+{"user_id":"lisa02","score":0.8958797346,"sequence":"auth_login -> file_DOWNLOAD -> sys_windows_event -> auth_login"}
+{"user_id":"jamesmichael","score":0.8958797346,"sequence":"process_start_None -> auth_login -> file_DOWNLOAD -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.8890760689,"sequence":"auth_login -> auth_login -> file_DELETE -> auth_login -> auth_login"}
+{"user_id":"lrobinson","score":0.8478094071,"sequence":"file_DELETE -> auth_login -> auth_login -> process_start_None -> auth_login"}
+{"user_id":"mitchellclark","score":0.8472978604,"sequence":"auth_login -> file_DOWNLOAD -> process_start_None"}
+{"user_id":"susanrogers","score":0.8344185962,"sequence":"auth_login -> file_READ -> auth_login -> process_start_None -> auth_login"}
+{"user_id":"dudleynicholas","score":0.8075443784,"sequence":"auth_login -> sys_windows_event -> auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.80603266,"sequence":"file_DELETE -> auth_login -> process_start_None -> auth_login -> auth_login"}
+{"user_id":"mitchellclark","score":0.8047189562,"sequence":"file_DOWNLOAD -> auth_login -> file_WRITE -> sys_windows_event"}
+{"user_id":"xreid","score":0.8024227288,"sequence":"auth_login -> auth_login -> process_start_None -> auth_login -> auth_login -> auth_login"}
+{"user_id":"xreid","score":0.8024227288,"sequence":"auth_login -> auth_login -> auth_login -> process_start_None -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.7934825283,"sequence":"sys_windows_event -> auth_login -> sys_windows_event -> process_start_None"}
+{"user_id":"dudleynicholas","score":0.7331685344,"sequence":"auth_login -> sys_windows_event -> sys_windows_event -> auth_login"}
+{"user_id":"dudleynicholas","score":0.7331685344,"sequence":"auth_login -> sys_windows_event -> process_start_None -> auth_login"}
+{"user_id":"mitchellclark","score":0.6931471806,"sequence":"auth_login -> file_DELETE -> auth_login"}
+{"user_id":"garzaanthony","score":0.6931471806,"sequence":"auth_login -> file_WRITE -> auth_login"}
+{"user_id":"kendragalloway","score":0.6931471806,"sequence":"file_WRITE -> process_start_None -> auth_login"}
+{"user_id":"susanrogers","score":0.6931471806,"sequence":"process_start_None -> sys_windows_event -> auth_login"}
+{"user_id":"susanrogers","score":0.6931471806,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.6931471806,"sequence":"process_start_None -> sys_windows_event -> file_DELETE"}
+{"user_id":"lrobinson","score":0.6931471806,"sequence":"file_DOWNLOAD -> file_READ -> process_start_None"}
+{"user_id":"michellejames","score":0.6931471806,"sequence":"file_DELETE -> auth_login -> sys_windows_event"}
+{"user_id":"michellejames","score":0.6931471806,"sequence":"process_start_None -> sys_windows_event -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.6931471806,"sequence":"file_WRITE -> auth_login -> auth_login"}
+{"user_id":"jamesmichael","score":0.6931471806,"sequence":"file_WRITE -> auth_login -> file_WRITE"}
+{"user_id":"lrobinson","score":0.6931471806,"sequence":"process_start_None -> sys_windows_event -> auth_login"}
+{"user_id":"lrobinson","score":0.6931471806,"sequence":"file_DOWNLOAD -> process_start_None -> sys_windows_event"}
+{"user_id":"lrobinson","score":0.6918111303,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login -> auth_login -> auth_login -> process_start_None -> auth_login"}
+{"user_id":"jacqueline19","score":0.6755791594,"sequence":"process_start_None -> sys_windows_event -> auth_login -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.6670000385,"sequence":"sys_windows_event -> auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.66087792,"sequence":"auth_login -> file_DELETE -> auth_login -> auth_login"}
+{"user_id":"jamesmichael","score":0.6580270087,"sequence":"process_start_None -> auth_login -> file_DELETE -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"michellejames","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"susanrogers","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"michellejames","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"susanrogers","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"susanrogers","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"susanrogers","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.6539264674,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"donaldgarcia","score":0.6524130007,"sequence":"file_DELETE -> auth_login -> auth_login -> process_start_None -> auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"garzaanthony","score":0.6496414921,"sequence":"auth_login -> sys_windows_event -> process_start_None -> auth_login -> sys_windows_event -> process_start_None"}
+{"user_id":"garzaanthony","score":0.6496414921,"sequence":"auth_login -> process_start_None -> process_start_None -> auth_login"}
+{"user_id":"xreid","score":0.6190392084,"sequence":"auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"susanrogers","score":0.6061358036,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"susanrogers","score":0.6061358036,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"garzaanthony","score":0.6061358036,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"mitchellclark","score":0.6019864022,"sequence":"auth_login -> file_DELETE -> auth_login -> auth_login"}
+{"user_id":"xreid","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"dudleynicholas","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"mitchellclark","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"dudleynicholas","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"dudleynicholas","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"dudleynicholas","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jacqueline19","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jacqueline19","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"dudleynicholas","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jacqueline19","score":0.5996211225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"lisa02","score":0.5972531564,"sequence":"auth_login -> file_DELETE -> file_DELETE -> process_start_None -> auth_login"}
+{"user_id":"xreid","score":0.5874926337,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login"}
+{"user_id":"xreid","score":0.5874926337,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login"}
+{"user_id":"jacqueline19","score":0.5753641449,"sequence":"process_start_None -> auth_login -> auth_login"}
+{"user_id":"lisa02","score":0.5725661522,"sequence":"file_DOWNLOAD -> process_start_None -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.5596157879,"sequence":"auth_login -> file_DELETE -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.5596157879,"sequence":"auth_login -> file_DELETE -> auth_login"}
+{"user_id":"garzaanthony","score":0.5596157879,"sequence":"auth_login -> file_DELETE -> auth_login"}
+{"user_id":"lrobinson","score":0.5570344524,"sequence":"sys_windows_event -> file_WRITE -> auth_login -> auth_login -> auth_login -> auth_login -> auth_login -> process_start_None"}
+{"user_id":"kendragalloway","score":0.5493061443,"sequence":"auth_login -> file_DELETE -> sys_windows_event -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.5493061443,"sequence":"sys_windows_event -> file_DELETE -> sys_windows_event -> auth_login"}
+{"user_id":"xreid","score":0.5108256238,"sequence":"file_DELETE -> auth_login -> auth_login"}
+{"user_id":"jacqueline19","score":0.5108256238,"sequence":"file_DOWNLOAD -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.5108256238,"sequence":"file_DOWNLOAD -> auth_login -> auth_login"}
+{"user_id":"jacqueline19","score":0.5108256238,"sequence":"file_DOWNLOAD -> auth_login -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.4904146265,"sequence":"auth_login -> process_start_None -> process_start_None -> sys_windows_event"}
+{"user_id":"xreid","score":0.4741285988,"sequence":"file_READ -> auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"donaldgarcia","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"lrobinson","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login -> auth_login -> auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"lrobinson","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"lrobinson","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"lrobinson","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"lisa02","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"donaldgarcia","score":0.4595323294,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.4581453659,"sequence":"process_start_None -> sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.4581453659,"sequence":"file_WRITE -> file_READ -> auth_login -> sys_windows_event"}
+{"user_id":"janetwilliams","score":0.4557587266,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.4557587266,"sequence":"process_start_None -> auth_login -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.4519851237,"sequence":"auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jamesmichael","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"maria95","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"jamesmichael","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"amandasanchez","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"amandasanchez","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login -> auth_login"}
+{"user_id":"jamesmichael","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.4480247225,"sequence":"auth_login -> auth_login -> auth_login"}
+{"user_id":"xreid","score":0.4236489302,"sequence":"auth_login -> file_DOWNLOAD -> process_start_None -> sys_windows_event"}
+{"user_id":"jpeterson","score":0.4054651081,"sequence":"file_DOWNLOAD -> auth_login -> process_start_None"}
+{"user_id":"susanrogers","score":0.4054651081,"sequence":"sys_windows_event -> file_DELETE -> auth_login"}
+{"user_id":"cassandra07","score":0.4054651081,"sequence":"auth_login -> file_READ -> auth_login"}
+{"user_id":"mitchellclark","score":0.4054651081,"sequence":"file_WRITE -> auth_login -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.4054651081,"sequence":"sys_windows_event -> file_DELETE -> auth_login"}
+{"user_id":"xreid","score":0.4054651081,"sequence":"file_WRITE -> auth_login -> auth_login"}
+{"user_id":"maria95","score":0.4054651081,"sequence":"auth_login -> file_WRITE -> auth_login"}
+{"user_id":"maria95","score":0.4054651081,"sequence":"file_DELETE -> file_READ -> auth_login"}
+{"user_id":"jamesmichael","score":0.4054651081,"sequence":"auth_login -> file_WRITE -> auth_login"}
+{"user_id":"lisa02","score":0.4054651081,"sequence":"auth_login -> file_READ -> auth_login"}
+{"user_id":"garzaanthony","score":0.3942286802,"sequence":"auth_login -> sys_windows_event -> process_start_None -> auth_login"}
+{"user_id":"garzaanthony","score":0.3942286802,"sequence":"auth_login -> sys_windows_event -> process_start_None -> auth_login"}
+{"user_id":"dudleynicholas","score":0.3916617558,"sequence":"sys_windows_event -> process_start_None -> auth_login -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.3662040962,"sequence":"process_start_None -> file_DOWNLOAD -> process_start_None -> auth_login -> process_start_None"}
+{"user_id":"dudleynicholas","score":0.3568138039,"sequence":"auth_login -> file_DOWNLOAD -> process_start_None -> sys_windows_event -> auth_login"}
+{"user_id":"kendragalloway","score":0.3566749439,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"michellejames","score":0.3465735903,"sequence":"auth_login -> file_WRITE -> sys_windows_event -> auth_login"}
+{"user_id":"donaldgarcia","score":0.3375643375,"sequence":"auth_login -> sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.3375643375,"sequence":"auth_login -> sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"dudleynicholas","score":0.3143043297,"sequence":"auth_login -> file_READ -> auth_login -> auth_login"}
+{"user_id":"michellejames","score":0.2876820725,"sequence":"auth_login -> file_READ -> auth_login"}
+{"user_id":"johnsonjoshua","score":0.2876820725,"sequence":"auth_login -> file_READ -> auth_login"}
+{"user_id":"garzaanthony","score":0.2554128119,"sequence":"file_DOWNLOAD -> file_DOWNLOAD -> auth_login -> auth_login"}
+{"user_id":"jamesmichael","score":0.2240123613,"sequence":"file_READ -> auth_login -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"xreid","score":0.2231435513,"sequence":"file_READ -> auth_login -> auth_login"}
+{"user_id":"donaldgarcia","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"janetwilliams","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"mitchellclark","score":0.2231435513,"sequence":"file_READ -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"cassandra07","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"kendragalloway","score":0.2231435513,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"maria95","score":0.2027325541,"sequence":"auth_login -> file_DOWNLOAD -> auth_login -> process_start_None"}
+{"user_id":"dudleynicholas","score":0.1823215568,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"jacqueline19","score":0.1823215568,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.1823215568,"sequence":"file_DELETE -> auth_login -> auth_login"}
+{"user_id":"susanrogers","score":0.1823215568,"sequence":"sys_windows_event -> process_start_None -> auth_login"}
+{"user_id":"susanrogers","score":0.1823215568,"sequence":"sys_windows_event -> process_start_None -> auth_login"}
+{"user_id":"jacqueline19","score":0.1823215568,"sequence":"auth_login -> process_start_None -> auth_login"}
+{"user_id":"maria95","score":0.1823215568,"sequence":"file_DELETE -> auth_login -> auth_login"}
+{"user_id":"maria95","score":0.1541506798,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"amandasanchez","score":0.1541506798,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.1541506798,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.1541506798,"sequence":"sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"jpeterson","score":0.1493415742,"sequence":"auth_login -> file_READ -> auth_login -> auth_login -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.0770753399,"sequence":"file_DOWNLOAD -> sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"hoffmanjennifer","score":0.0770753399,"sequence":"file_READ -> sys_windows_event -> auth_login -> auth_login"}
+{"user_id":"maria95","score":0.0,"sequence":"auth_login -> file_READ -> auth_login"}
+{"user_id":"xreid","score":0.0,"sequence":"file_DOWNLOAD -> sys_windows_event -> auth_login"}
+{"user_id":"kendragalloway","score":0.0,"sequence":"sys_windows_event -> sys_windows_event -> file_DELETE"}
+{"user_id":"donaldgarcia","score":0.0,"sequence":"process_start_None -> process_start_None -> file_DOWNLOAD"}
+{"user_id":"dudleynicholas","score":0.0,"sequence":"process_start_None -> process_start_None -> auth_login"}
+{"user_id":"kendragalloway","score":0.0,"sequence":"file_WRITE -> auth_login -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.0,"sequence":"auth_login -> file_DOWNLOAD -> auth_login"}
+{"user_id":"michellejames","score":0.0,"sequence":"file_DELETE -> process_start_None -> file_WRITE -> file_READ"}
+{"user_id":"dudleynicholas","score":0.0,"sequence":"process_start_None -> file_WRITE -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.0,"sequence":"auth_login -> sys_windows_event -> auth_login"}
+{"user_id":"jacqueline19","score":0.0,"sequence":"file_READ -> sys_windows_event -> auth_login"}
+{"user_id":"lrobinson","score":0.0,"sequence":"file_DELETE -> sys_windows_event -> auth_login"}
+{"user_id":"jpeterson","score":0.0,"sequence":"sys_windows_event -> sys_windows_event -> file_READ -> sys_windows_event"}
+{"user_id":"hoffmanjennifer","score":0.0,"sequence":"file_READ -> auth_login -> auth_login"}
+{"user_id":"susanrogers","score":0.0,"sequence":"process_start_None -> process_start_None -> auth_login"}
+{"user_id":"jamesmichael","score":0.0,"sequence":"auth_login -> file_DELETE -> auth_login"}
+{"user_id":"robinsonwilliam","score":0.0,"sequence":"process_start_None -> file_READ -> auth_login"}
+{"user_id":"michellejames","score":0.0,"sequence":"process_start_None -> file_DOWNLOAD -> auth_login"}
+{"user_id":"michellejames","score":0.0,"sequence":"process_start_None -> file_READ -> process_start_None -> auth_login"}
+{"user_id":"jamesmichael","score":0.0,"sequence":"auth_login -> file_READ -> auth_login"}
+{"user_id":"mitchellclark","score":0.0,"sequence":"file_DELETE -> sys_windows_event -> auth_login"}
+{"user_id":"lrobinson","score":0.0,"sequence":"file_DELETE -> file_READ -> file_DELETE"}
+{"user_id":"cassandra07","score":0.0,"sequence":"file_DELETE -> file_DOWNLOAD -> sys_windows_event"}

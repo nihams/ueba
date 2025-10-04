@@ -1,22 +1,20 @@
 import pandas as pd
 import json
 from datetime import datetime
-import math # Import math library
+import math 
 
 PROFILE_DB = 'user_profiles.json'
 
-# --- UPGRADED ---
-# Custom JSON encoder to handle any potential Pandas/Numpy data types
+
 class CustomEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, (int, float)) and (math.isnan(obj) or math.isinf(obj)):
-            return None # Convert NaN and Infinity to null
+            return None 
         if pd.isna(obj):
-            return None # Convert other Pandas nulls (like NaT) to null
+            return None 
         return super().default(obj)
 
 def load_profiles():
-    """Loads all user profiles from the JSON file."""
     try:
         with open(PROFILE_DB, 'r') as f:
             return json.load(f)
@@ -24,13 +22,10 @@ def load_profiles():
         return {}
 
 def save_profiles(profiles):
-    """Saves all user profiles to the JSON file using the custom encoder."""
     with open(PROFILE_DB, 'w') as f:
-        # Use the custom encoder to ensure the output is always valid JSON
         json.dump(profiles, f, indent=2, cls=CustomEncoder)
 
 def get_or_create_profile(profiles, user_id):
-    """Retrieves a user's profile or creates a default one with a risk score."""
     if user_id not in profiles:
         profiles[user_id] = {
             "user_id": user_id,
@@ -38,13 +33,11 @@ def get_or_create_profile(profiles, user_id):
             "process_whitelist": [],
             "failed_login_rate": {"count": 0, "first_event_time": None, "rate_per_hour": 0.0},
             "last_seen": None,
-            "risk_score": 0 # --- MODIFIED: Added risk_score ---
+            "risk_score": 0
         }
     return profiles[user_id]
 
 def run_analysis():
-    # --- NEW: Risk Score Weights ---
-    # Define how much each alert type contributes to a user's risk score.
     alert_weights = {
         "New IP": 5,
         "New Host": 10,
@@ -71,15 +64,12 @@ def run_analysis():
         print("Warning: 'user_to_peer_group.json' not found. Skipping peer group analysis.")
         user_to_group = {}
 
-    # --- NEW: Implement Risk Decay ---
-    # Reduce every user's risk score by 1% to make scores dynamic over time.
     for user_id, profile in profiles.items():
         profile['risk_score'] = round(profile.get('risk_score', 0) * 0.99)
 
     alerts = []
     group_profiles = {i: {'known_hosts': set()} for i in set(user_to_group.values())}
     
-    # --- NEW: Session Tracker for Sequential Analysis ---
     session_tracker = {}
 
     print("\nProcessing events and applying all detection logic...")
@@ -89,8 +79,6 @@ def run_analysis():
             continue
 
         profile = get_or_create_profile(profiles, user_id)
-        
-        # --- DETECTION LOGIC & RISK SCORING ---
         
         # Rule 1: New IP
         event_ip = event.get('src_ip')
@@ -126,11 +114,9 @@ def run_analysis():
                 profile['risk_score'] += alert_weights["Suspicious Sequence"] # Add to risk score
             session_tracker[session_id] = f"{action}_{status}"
 
-        # Update last_seen
         if pd.notna(event['timestamp']):
             profile['last_seen'] = event['timestamp'].isoformat()
 
-    # --- SAVING ---
     print("\nSaving updated user profiles with new risk scores...")
     save_profiles(profiles)
     print(f"\nGenerated {len(alerts)} alerts.")
