@@ -4,11 +4,12 @@ from minisom import MiniSom
 import matplotlib.pyplot as plt
 from pathlib import Path
 from collections import Counter
+import json
 
-def run_som_analysis(user_features_path='user_features.csv', output_image_path='som_u_matrix.png'):
+def run_som_analysis(user_features_path='user_features.csv', output_image_path='som_u_matrix.png', results_path='som_results.json'):
     """
     Performs an advanced SOM analysis using quantization error and a multi-epoch 
-    strategy to robustly identify outliers.
+    strategy to robustly identify outliers and saves the results for the dashboard.
     """
     print(f"Starting Advanced SOM analysis from '{user_features_path}'...")
 
@@ -19,7 +20,10 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
         return
 
     user_features_df = pd.read_csv(input_file, index_col='user_id')
-    data = user_features_df.values.astype(float)
+    
+    # Exclude score columns from the data used for SOM training
+    feature_cols = [col for col in user_features_df.columns if not col.endswith('_score')]
+    data = user_features_df[feature_cols].values.astype(float)
     
     print(f"Loaded feature matrix for {data.shape[0]} users with {data.shape[1]} features each.")
 
@@ -51,46 +55,46 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
         iterations = max(500, num_users * 5)
         som.train_random(data, iterations, verbose=False)
         
-        # --- NEW & IMPROVED OUTLIER DETECTION LOGIC ---
-        # Calculate quantization error for each user. This is the distance between
-        # each user's data vector and its Best Matching Unit (BMU) on the map.
-        # A high error means the user is far from any representative neuron (cluster).
         q_errors = np.linalg.norm(som.quantization(data) - data, axis=1)
-
-        # Identify outliers based on the distribution of these errors.
-        # Anyone in the top 5% (95th percentile) of errors is a candidate.
         error_threshold = np.percentile(q_errors, 95)
-        
-        # Get the indices of the users who are above the threshold
         outlier_indices = np.where(q_errors > error_threshold)[0]
         
-        # Add the corresponding user_ids to our list
         for idx in outlier_indices:
             all_outliers.append(user_features_df.index[idx])
     
     print("\n--- Multi-Epoch Analysis Complete ---")
 
-    # --- 3. Report Consistent Outliers ---
-    if not all_outliers:
+    # --- 3. Report and Save Consistent Outliers ---
+    sorted_outliers = []
+    if all_outliers:
+        outlier_counts = Counter(all_outliers)
+        sorted_outliers_tuples = sorted(outlier_counts.items(), key=lambda item: item[1], reverse=True)
+        
+        print("\nTop potential outliers (ranked by consistency across epochs):")
+        strong_outlier_threshold = num_epochs // 2
+
+        for user, count in sorted_outliers_tuples:
+            user_data = user_features_df.loc[user]
+            result_entry = {
+                "user_id": user,
+                "flagged_epochs": count,
+                "total_epochs": num_epochs,
+                "attack_score": int(user_data.get('attack_score', 0)),
+                "benign_score": int(user_data.get('benign_score', 0))
+            }
+            sorted_outliers.append(result_entry)
+
+            if count >= strong_outlier_threshold:
+                print(f"  -> User: {user:<20} (Flagged in {count}/{num_epochs} epochs) [STRONG CANDIDATE]")
+            else:
+                print(f"  -> User: {user:<20} (Flagged in {count}/{num_epochs} epochs) [Weak Candidate]")
+    else:
         print("No significant outliers were found across any of the training epochs.")
-        return
 
-    outlier_counts = Counter(all_outliers)
-    sorted_outliers = sorted(outlier_counts.items(), key=lambda item: item[1], reverse=True)
-
-    print("\nTop potential outliers (ranked by consistency across epochs):")
-    strong_outlier_threshold = num_epochs // 2
-    found_strong_outlier = False
-
-    for user, count in sorted_outliers:
-        if count >= strong_outlier_threshold:
-            print(f"  -> User: {user:<20} (Flagged in {count}/{num_epochs} epochs) [STRONG CANDIDATE]")
-            found_strong_outlier = True
-        else:
-            print(f"  -> User: {user:<20} (Flagged in {count}/{num_epochs} epochs) [Weak Candidate]")
-
-    if not found_strong_outlier:
-        print("\nNo users were consistently identified as strong outliers.")
+    # Save the ranked results to a JSON file for the dashboard
+    with open(results_path, 'w') as f:
+        json.dump(sorted_outliers, f, indent=2)
+    print(f"\n✅ SOM analysis results saved to '{results_path}'")
         
     # --- 4. Visualize the U-Matrix of the LAST Epoch for reference ---
     plt.figure(figsize=(12, 12))
@@ -100,7 +104,7 @@ def run_som_analysis(user_features_path='user_features.csv', output_image_path='
     plt.xlabel('SOM X-coordinate')
     plt.ylabel('SOM Y-coordinate')
     plt.savefig(output_image_path)
-    print(f"\n✅ U-matrix visualization from the last epoch saved to '{output_image_path}'")
+    print(f"✅ U-matrix visualization from the last epoch saved to '{output_image_path}'")
     plt.close()
 
 if __name__ == "__main__":

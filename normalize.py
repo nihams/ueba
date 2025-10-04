@@ -1,197 +1,158 @@
-#!/usr/bin/env python3
-"""
-normalize.py
-Reads data/raw/* and writes data/normalized/events.jsonl using the canonical schema.
-"""
-import os, json, re
-from dateutil import parser
-from datetime import datetime
+import os
+import json
 import csv
+import re
+from dateutil import parser as date_parser
+from datetime import datetime
 
+# --- Configuration ---
 RAW_DIR = "data/raw"
 OUT_DIR = "data/normalized"
-os.makedirs(OUT_DIR, exist_ok=True)
 OUT_FILE = os.path.join(OUT_DIR, "events.jsonl")
 
-# Helpers
-def iso_or_none(s):
-    try:
-        return parser.parse(s).astimezone().isoformat()
-    except Exception:
-        return None
+# --- Regex Parsers for unstructured logs ---
+AUTH_RE = re.compile(
+    r'(?P<month>\w{3})\s+(?P<day>\d{1,2})\s+(?P<time>\d\d:\d\d:\d\d)\s+'
+    r'(?P<host>\S+)\s+sshd\[\d+\]:\s+(?P<result>Accepted|Failed)\s+password for '
+    r'(?P<user>\S+) from (?P<src_ip>\S+) port (?P<src_port>\d+)'
+)
 
-# Parsers
-AUTH_RE = re.compile(r'(?P<month>\w{3})\s+(?P<day>\d{1,2})\s+(?P<time>\d\d:\d\d:\d\d)\s+(?P<host>\S+)\s+sshd\[\d+\]:\s+(?P<result>Accepted|Failed)\s+password for (?P<user>\S+) from (?P<src_ip>\S+) port (?P<src_port>\d+)')
-NGINX_RE = re.compile(r'(?P<src_ip>\S+) - (?P<user>\S+) \[(?P<ts>[^\]]+)\] "(?P<method>\S+) (?P<resource>\S+) \S+" (?P<status>\d+) (?P<bytes>\d+)')
-FW_RE = re.compile(r'(?P<ts>\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2})\s+(?P<host>\S+)\s+FIREWALL:\s+(?P<action>\w+)\s+proto=(?P<proto>\S+)\s+src=(?P<src_ip>[^:]+):(?P<src_port>\d+)\s+dst=(?P<dst_ip>[^:]+):(?P<dst_port>\d+)')
+# --- Parser Functions for each log type ---
 
 def parse_auth_line(line):
-    m = AUTH_RE.search(line)
-    if not m:
+    """Parses a line from auth.log into the canonical format."""
+    match = AUTH_RE.search(line)
+    if not match:
         return None
-    # reconstruct a timestamp with current year
-    ts_str = f"{m.group('month')} {m.group('day')} {datetime.utcnow().year} {m.group('time')}"
+    
+    m = match.groupdict()
+    # Reconstruct timestamp with the current year to make it parseable
+    ts_str = f"{m['month']} {m['day']} {datetime.utcnow().year} {m['time']}"
     try:
-        ts = datetime.strptime(ts_str, "%b %d %Y %H:%M:%S").isoformat() + "Z"
-    except:
-        ts = None
+        ts = date_parser.parse(ts_str).isoformat() + "Z"
+    except date_parser.ParserError:
+        ts = datetime.utcnow().isoformat() + "Z" # Fallback
+
     return {
         "timestamp": ts,
         "event_type": "auth",
         "action": "login",
-        "user_id": m.group("user"),
-        "host": m.group("host"),
-        "src_ip": m.group("src_ip"),
-        "src_port": int(m.group("src_port")),
-        "status": "success" if m.group("result")=="Accepted" else "failure",
+        "user_id": m.get("user"),
+        "host": m.get("host"),
+        "src_ip": m.get("src_ip"),
+        "src_port": int(m.get("src_port", 0)),
+        "status": "success" if m.get("result") == "Accepted" else "failure",
         "raw": line.strip()
     }
 
-def parse_nginx_line(line):
-    m = NGINX_RE.search(line)
-    if not m:
-        return None
-    # nginx timestamp is like: 01/Oct/2025:12:34:56 +0000
-    ts_raw = m.group("ts")
-    # try parse dd/Mon/YYYY:HH:MM:SS
-    try:
-        ts = parser.parse(ts_raw.split()[0]).isoformat() + "Z"
-    except:
-        ts = None
-    user = m.group("user") if m.group("user") != "-" else None
+def parse_file_audit_row(row):
+    """Parses a row from file_audit.csv into the canonical format."""
+    # Expected columns: timestamp, user, path, action, bytes
     return {
-        "timestamp": ts,
-        "event_type": "web",
-        "action": m.group("method"),
-        "resource": m.group("resource"),
-        "user_id": user,
-        "src_ip": m.group("src_ip"),
-        "status": m.group("status"),
-        "bytes": int(m.group("bytes")),
-        "raw": line.strip()
+        "timestamp": row.get('timestamp'),
+        "event_type": "file",
+        "action": row.get('action', '').lower(),
+        "user_id": row.get('user'),
+        "resource": row.get('path'),
+        "bytes": int(row.get('bytes', 0)),
+        "raw": ",".join(row.values())
     }
-
-def parse_firewall_line(line):
-    m = FW_RE.search(line)
-    if not m:
-        return None
-    ts = None
-    try:
-        ts = datetime.strptime(f"{m.group('ts')} {datetime.utcnow().year}", "%b %d %H:%M:%S %Y").isoformat() + "Z"
-    except:
-        ts = None
-    return {
-        "timestamp": ts,
-        "event_type": "network",
-        "action": m.group("action"),
-        "host": m.group("host"),
-        "src_ip": m.group("src_ip"),
-        "src_port": int(m.group("src_port")),
-        "dst_ip": m.group("dst_ip"),
-        "dst_port": int(m.group("dst_port")),
-        "raw": line.strip()
-    }
-
-def parse_windows_json(line):
-    try:
-        j = json.loads(line)
-        return {
-            "timestamp": j.get("TimeCreated"),
-            "event_type": "sys",
-            "action": "windows_event",
-            "host": j.get("Host"),
-            "user_id": j.get("User"),
-            "raw": line.strip(),
-            "tags": [f"win_event_{j.get('EventID')}"]
-        }
-    except Exception:
-        return None
 
 def parse_endpoint_json(line):
+    """Parses a JSON line from endpoint_proc.jsonl into the canonical format."""
     try:
         j = json.loads(line)
         return {
             "timestamp": j.get("timestamp"),
-            "event_type": j.get("event_type") or "process",
+            "event_type": "process",
+            "action": "execute",
             "user_id": j.get("user"),
             "host": j.get("host"),
             "process": j.get("process"),
-            "resource": j.get("cmdline"),
             "raw": line.strip()
         }
-    except:
+    except json.JSONDecodeError:
         return None
 
-def parse_file_audit_row(row):
-    # row = [timestamp,user,path,action,bytes]
-    ts, user, path, action, bytes_ = row
-    return {
-        "timestamp": ts,
-        "event_type": "file",
-        "action": action,
-        "user_id": user,
-        "resource": path,
-        "bytes": int(bytes_) if bytes_ else 0,
-        "raw": ",".join(row)
+def parse_web_proxy_json(line):
+    """
+    Parses a JSON line from the new web_proxy.jsonl into the canonical format.
+    This is the key new function.
+    """
+    try:
+        j = json.loads(line)
+        # Map the web proxy fields to our canonical schema
+        return {
+            "timestamp": j.get("timestamp"),
+            "event_type": "web",
+            "action": j.get("http_method", "").lower(),
+            "user_id": j.get("user_id"),
+            "host": j.get("host"),
+            "src_ip": j.get("src_ip"),
+            "dst_ip": j.get("dst_ip"),
+            "dst_hostname": j.get("dst_hostname"),
+            "http_method": j.get("http_method"),
+            "bytes_out": j.get("bytes_out"),
+            "bytes_in": j.get("bytes_in"),
+            "user_agent": j.get("user_agent"),
+            "url_category": j.get("url_category"),
+            "status_code": j.get("status_code"),
+            "status": "success" if str(j.get("status_code")).startswith('2') else "failure",
+            "raw": line.strip()
+        }
+    except json.JSONDecodeError:
+        return None
+
+def normalize_all_logs(raw_dir=RAW_DIR, out_file=OUT_FILE):
+    """
+    Reads all raw log files, processes them with the correct parser,
+    and writes the unified events to a single sorted JSONL file.
+    """
+    os.makedirs(os.path.dirname(out_file), exist_ok=True)
+    
+    all_events = []
+    
+    # Define which parser to use for each file
+    file_parsers = {
+        "auth.log": ("line", parse_auth_line),
+        "endpoint_proc.jsonl": ("line", parse_endpoint_json),
+        "web_proxy.jsonl": ("line", parse_web_proxy_json), # <-- ADDED NEW FILE
+        "file_audit.csv": ("csv", parse_file_audit_row)
     }
 
-def process_all(raw_dir=RAW_DIR, out_file=OUT_FILE):
-    events = []
-    # AUTH
-    authf = os.path.join(raw_dir, "auth.log")
-    if os.path.exists(authf):
-        with open(authf) as f:
-            for line in f:
-                p = parse_auth_line(line)
-                if p: events.append(p)
-    # nginx
-    ngf = os.path.join(raw_dir, "nginx_access.log")
-    if os.path.exists(ngf):
-        with open(ngf) as f:
-            for line in f:
-                p = parse_nginx_line(line)
-                if p: events.append(p)
-    # firewall
-    fwf = os.path.join(raw_dir, "firewall.log")
-    if os.path.exists(fwf):
-        with open(fwf) as f:
-            for line in f:
-                p = parse_firewall_line(line)
-                if p: events.append(p)
-    # windows events
-    wwf = os.path.join(raw_dir, "windows_events.jsonl")
-    if os.path.exists(wwf):
-        with open(wwf) as f:
-            for line in f:
-                p = parse_windows_json(line)
-                if p: events.append(p)
-    # endpoint proc
-    epf = os.path.join(raw_dir, "endpoint_proc.jsonl")
-    if os.path.exists(epf):
-        with open(epf) as f:
-            for line in f:
-                p = parse_endpoint_json(line)
-                if p: events.append(p)
-    # file audit CSV
-    fc = os.path.join(raw_dir, "file_audit.csv")
-    if os.path.exists(fc):
-        with open(fc) as f:
-            rdr = csv.reader(f)
-            header = next(rdr, None)
-            for row in rdr:
-                p = parse_file_audit_row(row)
-                if p: events.append(p)
-    # write JSONL
-    with open(out_file, "w") as out:
-        for ev in events:
-            # ensure timestamp normalized
-            if ev.get("timestamp"):
-                try:
-                    ev["timestamp"] = iso_or_none(ev["timestamp"])
-                except:
-                    ev["timestamp"] = ev["timestamp"]
-            out.write(json.dumps(ev) + "\n")
-    print("Wrote normalized events:", out_file, "count:", len(events))
+    print("Starting log normalization process...")
+    for filename, (file_type, parser_func) in file_parsers.items():
+        filepath = os.path.join(raw_dir, filename)
+        if not os.path.exists(filepath):
+            print(f"  - Warning: '{filename}' not found, skipping.")
+            continue
+        
+        print(f"  - Processing '{filename}'...")
+        with open(filepath, "r") as f:
+            if file_type == "line":
+                for line in f:
+                    if event := parser_func(line):
+                        all_events.append(event)
+            elif file_type == "csv":
+                reader = csv.DictReader(f)
+                for row in reader:
+                    if event := parser_func(row):
+                        all_events.append(event)
+
+    if not all_events:
+        print("No events were processed. Is the data/raw directory populated?")
+        return
+
+    # Sort all events by timestamp to create a chronological record
+    print("Sorting all events by timestamp...")
+    all_events.sort(key=lambda x: x.get('timestamp', ''))
+
+    # Write to the canonical output file
+    with open(out_file, "w") as f:
+        for event in all_events:
+            f.write(json.dumps(event) + '\n')
+            
+    print(f"\n✅ Successfully normalized {len(all_events)} events into '{out_file}'")
 
 if __name__ == "__main__":
-    process_all()
+    normalize_all_logs()
