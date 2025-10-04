@@ -1,18 +1,8 @@
-<<<<<<< HEAD
 import os
 import json
 import csv
 import re
 from dateutil import parser as date_parser
-=======
-#!/usr/bin/env python3
-"""
-normalize.py
-Reads data/raw/* and writes data/normalized/events.jsonl using the canonical schema.
-"""
-import os, json, re
-from dateutil import parser
->>>>>>> 22a2f47f0803f8ab08b449d7c6b26f9ce3342f06
 from datetime import datetime
 
 # --- Configuration ---
@@ -130,7 +120,6 @@ def normalize_all_logs(raw_dir=RAW_DIR, out_file=OUT_FILE):
         "file_audit.csv": ("csv", parse_file_audit_row)
     }
 
-<<<<<<< HEAD
     print("Starting log normalization process...")
     for filename, (file_type, parser_func) in file_parsers.items():
         filepath = os.path.join(raw_dir, filename)
@@ -164,78 +153,6 @@ def normalize_all_logs(raw_dir=RAW_DIR, out_file=OUT_FILE):
             f.write(json.dumps(event) + '\n')
             
     print(f"\n✅ Successfully normalized {len(all_events)} events into '{out_file}'")
-=======
-def process_all(raw_dir=RAW_DIR, out_file=OUT_FILE):
-    events = []
-    
-    # --- Auth Logs ---
-    with open(os.path.join(raw_dir, "auth.log"), "r") as f:
-        for line in f:
-            if match := auth_log_re.match(line):
-                data = match.groupdict()
-                events.append({
-                    "timestamp": parse_syslog_time(data['timestamp']).isoformat() + "Z",
-                    "event_type": "auth", "action": "login",
-                    "user_id": data['user_id'], "host": data['host'],
-                    "src_ip": data['src_ip'], "src_port": int(data['src_port']),
-                    "status": "success" if data['status'] == 'Accepted' else 'failure',
-                    "raw": line.strip()
-                })
-
-    # --- Firewall Logs ---
-    with open(os.path.join(raw_dir, "firewall.log"), "r") as f:
-        for line in f:
-            if match := fw_log_re.match(line):
-                data = match.groupdict()
-                events.append({
-                    "timestamp": parse_syslog_time(data['timestamp']).isoformat() + "Z",
-                    "event_type": "network", "action": data['action'].lower(),
-                    "host": data['host'], "src_ip": data['src_ip'],
-                    "src_port": int(data['src_port']), "dst_ip": data['dst_ip'],
-                    "dst_port": int(data['dst_port']), "bytes": int(data['bytes']),
-                    "raw": line.strip()
-                })
-
-    # --- File Audit Logs ---
-    with open(os.path.join(raw_dir, "file_audit.csv"), "r") as f:
-        for row in csv.DictReader(f):
-            events.append({
-                "timestamp": row['timestamp'], "event_type": "file",
-                "action": row['action'].lower(), "user_id": row['user'],
-                "resource": row['path'], "bytes": int(row['bytes']),
-                "raw": f"{row['timestamp']},{row['user']},{row['path']},{row['action']},{row['bytes']}"
-            })
-
-    # --- Endpoint Process Logs ---
-    with open(os.path.join(raw_dir, "endpoint_proc.jsonl"), "r") as f:
-        for line in f:
-            data = json.loads(line)
-            events.append({
-                "timestamp": data['timestamp'], "event_type": "process",
-                "action": "execute", "user_id": data['user'],
-                "host": data['host'], "process": data['process'],
-                "raw": line.strip()
-            })
-            
-    # --- Windows Event Logs ---
-    with open(os.path.join(raw_dir, "windows_events.jsonl"), "r") as f:
-        for line in f:
-            data = json.loads(line)
-            events.append({
-                "timestamp": data['TimeCreated'], "event_type": "windows",
-                "action": "service_install" if data.get('EventID') == 7045 else "unknown",
-                "user_id": data['User'], "host": data['Host'],
-                "raw": line.strip()
-            })
-
-    events.sort(key=lambda x: x['timestamp'])
-
-    with open(out_file, "w") as f:
-        for event in events:
-            f.write(json.dumps(event) + '\n')
-            
-    print(f"Successfully normalized {len(events)} events into '{out_file}'")
->>>>>>> 22a2f47f0803f8ab08b449d7c6b26f9ce3342f06
 
 if __name__ == "__main__":
     normalize_all_logs()
