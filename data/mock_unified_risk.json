@@ -1,0 +1,64 @@
+[
+  {
+    "user_id": "user_001",
+    "unified_risk_score": 0.95,
+    "peer_group": "admin_users",
+    "som_score": 0.88,
+    "contributing_alerts": [
+      {
+        "alert_id": "alert_001",
+        "type": "unusual_login_time",
+        "severity": "high"
+      },
+      {
+        "alert_id": "alert_002",
+        "type": "privilege_escalation",
+        "severity": "critical"
+      }
+    ]
+  },
+  {
+    "user_id": "user_002",
+    "unified_risk_score": 0.82,
+    "peer_group": "regular_users",
+    "som_score": 0.75,
+    "contributing_alerts": [
+      {
+        "alert_id": "alert_003",
+        "type": "data_exfiltration",
+        "severity": "high"
+      },
+      {
+        "alert_id": "alert_004",
+        "type": "suspicious_file_access",
+        "severity": "medium"
+      }
+    ]
+  },
+  {
+    "user_id": "user_003",
+    "unified_risk_score": 0.71,
+    "peer_group": "admin_users",
+    "som_score": 0.68,
+    "contributing_alerts": [
+      {
+        "alert_id": "alert_005",
+        "type": "failed_login_attempts",
+        "severity": "medium"
+      }
+    ]
+  },
+  {
+    "user_id": "user_004",
+    "unified_risk_score": 0.58,
+    "peer_group": "regular_users",
+    "som_score": 0.52,
+    "contributing_alerts": [
+      {
+        "alert_id": "alert_006",
+        "type": "unusual_access_pattern",
+        "severity": "low"
+      }
+    ]
+  }
+]

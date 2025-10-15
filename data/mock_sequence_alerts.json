@@ -1,0 +1,24 @@
+[
+  {
+    "session_id": "session_001",
+    "user_id": "user_001",
+    "score": 0.92,
+    "sequence": [
+      "login",
+      "privilege_change",
+      "data_access",
+      "logout"
+    ]
+  },
+  {
+    "session_id": "session_002",
+    "user_id": "user_002",
+    "score": 0.85,
+    "sequence": [
+      "login",
+      "data_download",
+      "upload",
+      "suspicious_activity"
+    ]
+  }
+]
